@@ -1,7 +1,7 @@
 var
     express = require('express'),
     likesRouter = express.Router(),
-    likeCtrl = require('../controllers/likeCtrl.js')
+    likeCtrl = require('../controller/likeCtrl.js')
 
 likesRouter.route('/likes')
     .post(likeCtrl.create)
