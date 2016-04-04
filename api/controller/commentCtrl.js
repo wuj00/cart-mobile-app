@@ -8,6 +8,30 @@ module.exports = {
     })
   },
   destroy: function(req, res){
-    Comment.findOne({_id: req.params.id})
+    Comment.findOne({_id: req.params.id}, function(err, comment){
+      if(err) throw err
+      Comment.remove({_id: req.params.id}, function(err){
+        if(err) throw err
+        res.json(comment)
+      })
+    })
+  },
+  update: function(req,res){
+    Comment.findOne({_id: req.params.id}).exec(function(err,comment){
+      if(err) throw err
+      comment.description = req.body.description
+      comment.save(function(err, comment){
+        if(err) throw err
+        res.json(comment)
+      })
+      res.json(comment)
+    })
+  },
+  create: function(req,res){
+    var comment = new Comment(req.body)
+    comment.save(function(err,comment){
+      if(err) throw err
+      res.json(user)
+    })
   }
 }

@@ -41,7 +41,7 @@ module.exports = {
     })
   },
   create: function(req,res){
-    var new_user = new Stunt(req.body)
+    var new_user = new User(req.body)
     new_user.save(function(err, user){
       if(err) throw err
       res.json(user)
