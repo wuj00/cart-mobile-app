@@ -5,13 +5,14 @@ var
   // bcrypt = require('bcrypt-nodejs')
 
 var user_schema = Schema({
-  name: string,
+  name: String,
   username: {type: String, unique: true, required: true },
   password: {type: String, required: true},
+  profile: String
 })
 
 
-var User = mongoose.model('User', userSchema)
+var User = mongoose.model('User', user_schema)
 
 
 module.exports = User
