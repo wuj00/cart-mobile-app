@@ -11,7 +11,7 @@ userRouter.route('/')
 userRouter.route('/:id')
   .get(userCtrl.profile)
   .delete(userCtrl.destroy)
-  .update(userCtrl.update)
+  .patch(userCtrl.update)
 
 
 module.exports = userRouter

@@ -25,7 +25,7 @@ app.use(body_parser.json())
 app.use(morgan("dev"))
 
 app.use('/users', userRoutes)
-app.use('/likes', likesRoutes)
+// app.use('/likes', likesRoutes)
 app.use('/products', productsRoutes)
 app.use('/category', categoryRoutes)
 app.use('/comments', commentRoutes)
