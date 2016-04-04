@@ -1,1 +1,17 @@
 /* Empty. Add your own CSS if you like */
+.tab-nav {
+  height: auto;
+  background: rgb(33, 33, 33);
+}
+
+.middle-icon {
+  background:black;
+}
+
+ion-tabs.tabs-color-active-positive .tab-item {
+  color: rgb(135, 135, 135);
+}
+ion-tabs.tabs-color-active-positive .tab-item.tab-item-active, ion-tabs.tabs-color-active-positive .tab-item.active, ion-tabs.tabs-color-active-positive .tab-item.activated  {
+  color: white;
+  background: black;
+}
