@@ -10,7 +10,8 @@ var
   // userRoutes = require('./routes/users.js'),
   productsRoutes = require('./routes/products.js'),
   categoryRoutes = require('./routes/categories.js'),
-  commentRoutes = require('./routes/comments.js')
+  commentRoutes = require('./routes/comments.js'),
+  likesRoutes = require('./routes/likes.js')
 
 
 
@@ -25,7 +26,7 @@ app.use(body_parser.json())
 app.use(morgan("dev"))
 
 // app.use('/users', userRoutes)
-// app.use('/likes', likesRoutes)
+app.use('/likes', likesRoutes)
 app.use('/products', productsRoutes)
 app.use('/category', categoryRoutes)
 app.use('/comments', commentRoutes)
