@@ -1,4 +1,4 @@
-var Catagory = require("../models/Catagory.js")
+var Catagory = require("../models/Catergory.js")
 
 module.exports = {
   index: function(req, res){
