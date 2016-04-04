@@ -9,6 +9,9 @@ var user_schema = Schema({
   email: {type: String, unique: true, required: true},
   username: {type: String, unique: true, required: true },
   password: {type: String, required: true},
+  products: [{type: ObjectId, ref: "Product"}],
+  comments_posted: [{type: ObjectId, ref: "Comment"}],
+  liked_products: [{type: ObjectId, ref: "Like"}],
   picture: String,
   description: String
 })
