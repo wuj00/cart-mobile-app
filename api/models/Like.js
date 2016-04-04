@@ -9,5 +9,4 @@ var like_schema = Schema({
     })
 
 var Like = mongoose.model('Like', like_schema)
-
 module.exports = Like
