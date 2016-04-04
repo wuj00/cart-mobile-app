@@ -6,5 +6,8 @@ module.exports = {
       if (err) throw err
       res.json({success: true, message: "All comments", comments: comments})
     })
+  },
+  destroy: function(req, res){
+    Comment.findOne({_id: req.params.id})
   }
 }
