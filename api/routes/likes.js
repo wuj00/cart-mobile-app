@@ -1,10 +1,10 @@
 var
     express = require('express'),
-    likeRouter = express.Router(),
-    likeCtrl = require('../controllers/likeCtrl.js')
+    likesRouter = express.Router(),
+    likeCtrl = require('../controller/likeCtrl.js')
 
-likeRouter.route('/likes')
+likesRouter.route('/likes')
     .post(likeCtrl.create)
     .delete(likeCtrl.delete)
 
-module.exports = likeRouter
+module.exports = likesRouter
