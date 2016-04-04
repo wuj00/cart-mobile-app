@@ -1,5 +1,5 @@
 var
-  User require('../models/User.js')
+  User = require('../models/User.js')
 
 module.exports = {
 
@@ -12,7 +12,7 @@ module.exports = {
   },
   users: function(req,res){
     User.find({}).exec(function(err,users){
-      if(err) console.log(err));
+      if(err) console.log(err);
       res.json(users)
     })
   },

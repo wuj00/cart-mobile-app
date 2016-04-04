@@ -1,15 +1,14 @@
 var
   express = require('express'),
   userRouter = express.Router(),
-  userCtrl = require('../controllers/users.js'),
-  User = require('../models/User.js'),
+  userCtrl = require('../controller/userCtrl.js')
 
 
-userRouter.routes('/')
+userRouter.route('/')
   .get(userCtrl.users)
   .post(userCtrl.create)
 
-userRouter.routes('/:id')
+userRouter.route('/:id')
   .get(userCtrl.profile)
   .delete(userCtrl.destroy)
   .update(userCtrl.update)
