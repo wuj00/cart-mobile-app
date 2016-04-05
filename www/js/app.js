@@ -40,10 +40,10 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
 
   // Each tab has its own nav history stack:
 
-  .state('tab.home', {
-    url: '/home',
+  .state('tab.newsFeed-user', {
+    url: '/newsFeed/:user',
     views: {
-      'tab-home': {
+      'tab-newsFeed-user': {
         templateUrl: 'templates/tab-home.html',
         controller: 'HomeCtrl as hc'
       }
@@ -59,29 +59,29 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
         }
       }
     })
-    .state('tab.post', {
-      url: '/post',
+    .state('tab.post-user', {
+      url: '/post/:user',
       views: {
-        'tab-post': {
+        'tab-post-user': {
           templateUrl: 'templates/tab-post.html',
           controller: 'PostCtrl as pc'
         }
       }
     })
 
-  .state('tab.notifications', {
-    url: '/notifications',
+  .state('tab.notifications-user', {
+    url: '/notifications/:user',
     views: {
-      'tab-notifications': {
+      'tab-notifications-user': {
         templateUrl: 'templates/tab-notifications.html',
         controller: 'NotificationsCtrl as nc'
       }
     }
   })
-  .state('tab.profile', {
-    url: '/profile',
+  .state('tab.profile-user', {
+    url: '/profile/:user',
     views: {
-      'tab-profile': {
+      'tab-profile-user': {
         templateUrl: 'templates/tab-profile.html',
         controller: 'ProfileCtrl as pc'
       }
@@ -89,6 +89,6 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
   })
 
   // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/tab/home');
+  $urlRouterProvider.otherwise('/tab/newsFeed/:user');
 
 });

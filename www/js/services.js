@@ -15,6 +15,7 @@ function userService($http){
     delete: destroy,
     update: update,
   }
+  return service
 
   function index(){
     return $http.get('/users')
@@ -37,6 +38,7 @@ function relationService($http){
     create: create,
     delete: destroy
   }
+  return service
 
   function create(data){
     return $http.post('/relations', data)
@@ -54,6 +56,8 @@ function productService($http){
     update: update,
     destroy: destroy
   }
+  return service
+
   function index(){
     return $http.get('/products')
   }
@@ -76,6 +80,8 @@ function likeService($http){
     create: create,
     delete: destroy
   }
+  return service
+
   function create(data){
     return $http.post('/likes/', data)
   }
@@ -91,6 +97,8 @@ function commentService($http){
     update: update,
     delete: destroy,
   }
+  return service
+
   function index(){
     return $http.get('/comments')
   }
@@ -113,6 +121,8 @@ function categoryService($http){
     update: update,
     delete: destroy
   }
+  return service
+
   function index(){
     return $http.get('/category')
   }
@@ -135,6 +145,8 @@ function reviewService($http){
     create: create,
     delete: destroy
   }
+  return service
+  
   function create(data){
     return $http.post('/reviews/', data)
   }

@@ -1,5 +1,12 @@
 <ion-view view-title="Search">
   <ion-content>
-    <h1>{{sc.title}}</h1>
+    <h1>All Catagories</h1>
+    <div ng-repeat="c in sc.allCatagories">
+      <div>{{c.name}}</div>
+    </div>
+    <h1>All Products</h1>
+    <div ng-repeat="p in sc.allProducts">
+      <div>{{ p.name }}</div>
+    </div>
   </ion-content>
 </ion-view>

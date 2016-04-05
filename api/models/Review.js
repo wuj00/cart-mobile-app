@@ -1,13 +1,13 @@
 var
   mongoose = require('mongoose'),
   Schema = mongoose.Schema,
-  ObjetId = Schema.Types.ObjectId
+  ObjectId = Schema.Types.ObjectId
 
 
 var reviewSchema = Schema({
   _reviewer: {type: ObjectId, ref: "User"},
   _reviewed: {type: ObjectId, ref: "User"},
-  starRating: {type: Number, required: true, capped:{max: 5}}
+  starRating: {type: Number, required: true, capped:{max: 5}},
   description: String
 })
 

@@ -6,28 +6,28 @@ navigation history that also transitions its views in and out.
 <ion-tabs class="tabs-icon-top tabs-color-active-positive">
 
   <!-- Newsfeed Tab -->
-  <ion-tab icon-off="ion-home" icon-on="ion-home" href="#/tab/home">
-    <ion-nav-view name="tab-home"></ion-nav-view>
+  <ion-tab icon-off="ion-home" icon-on="ion-home" ui-sref="tab.newsFeed-user({user: main.currentUserId})">
+    <ion-nav-view name="tab-newsFeed-user"></ion-nav-view>
   </ion-tab>
 
   <!-- Search Tab -->
-  <ion-tab icon-off="ion-ios-search" icon-on="ion-ios-search-strong" href="#/tab/search">
+  <ion-tab icon-off="ion-ios-search" icon-on="ion-ios-search-strong" ui-sref="tab.search">
     <ion-nav-view name="tab-search"></ion-nav-view>
   </ion-tab>
 
   <!-- Post tab -->
-  <ion-tab class="middle-icon" icon-off="ion-paper-airplane" icon-on="ion-paper-airplane" href="#/tab/post">
-    <ion-nav-view name="tab-post"></ion-nav-view>
+  <ion-tab icon-off="ion-paper-airplane" icon-on="ion-paper-airplane" ui-sref="tab.post-user({user: main.currentUserId})">
+    <ion-nav-view name="tab-post-user"></ion-nav-view>
   </ion-tab>
 
   <!-- Notifications Tab -->
-  <ion-tab icon-off="ion-android-alert" icon-on="ion-android-alert" href="#/tab/notifications">
-    <ion-nav-view name="tab-notifications"></ion-nav-view>
+  <ion-tab icon-off="ion-android-alert" icon-on="ion-android-alert" ui-sref="tab.notifications-user({user: main.currentUserId})">
+    <ion-nav-view name="tab-notifications-user"></ion-nav-view>
   </ion-tab>
 
   <!-- Profile Tab -->
-  <ion-tab icon-off="ion-ios-body-outline" icon-on="ion-ios-body" href="#/tab/profile">
-    <ion-nav-view name="tab-profile"></ion-nav-view>
+  <ion-tab icon-off="ion-ios-body-outline" icon-on="ion-ios-body" ui-sref="tab.profile-user({user: main.currentUserId})">
+    <ion-nav-view name="tab-profile-user"></ion-nav-view>
   </ion-tab>
 
 
