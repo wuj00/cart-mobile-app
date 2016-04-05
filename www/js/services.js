@@ -5,6 +5,7 @@ angular.module('starter.services', [])
 .factory('likeService', likeService)
 .factory('commentService', commentService)
 .factory('categoryService', categoryService)
+.factory('reviewService', reviewService)
 
 function userService($http){
   var service = {
@@ -38,10 +39,10 @@ function relationService($http){
   }
 
   function create(data){
-    return $http.post('/users', data)
+    return $http.post('/relations', data)
   }
   function destroy(id){
-    return $http.delete('/users/' + id)
+    return $http.delete('/relations/' + id)
   }
 }
 
@@ -126,5 +127,18 @@ function categoryService($http){
   }
   function destroy(id){
     return $http.delete('/category/' + id)
+  }
+}
+
+function reviewService($http){
+  var service = {
+    create: create,
+    delete: destroy
+  }
+  function create(data){
+    return $http.post('/reviews/', data)
+  }
+  function destroy(id){
+    return $http.delete('/reviews/' + id)
   }
 }

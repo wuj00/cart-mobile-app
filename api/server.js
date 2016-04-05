@@ -13,7 +13,8 @@ var
   categoryRoutes = require('./routes/categories.js'),
   commentRoutes = require('./routes/comments.js'),
   likesRoutes = require('./routes/likes.js'),
-  relationRoutes = require('./routes/relations.js')
+  relationRoutes = require('./routes/relations.js'),
+  reviewRoutes = require('./routes/reviews.js')
 
 
 
@@ -38,6 +39,7 @@ app.use('/products', productsRoutes)
 app.use('/category', categoryRoutes)
 app.use('/comments', commentRoutes)
 app.use('/relations', relationRoutes)
+app.use('/reviews', reviewRoutes)
 
 app.listen(port, function(err){
   if(err) throw err
