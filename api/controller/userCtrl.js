@@ -3,14 +3,14 @@ var
 
 module.exports = {
 
-  profile: function(req,res){
+  show: function(req,res){
     User.findOne({_id: req.params.id}).exec(function(err,user){
       if(err) console.log(err)
       console.log(user)
       res.json(user)
     })
   },
-  users: function(req,res){
+  index: function(req,res){
     User.find({}).exec(function(err,users){
       if(err) console.log(err);
       res.json(users)

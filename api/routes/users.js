@@ -5,11 +5,11 @@ var
 
 
 userRouter.route('/')
-  .get(userCtrl.users)
+  .get(userCtrl.index)
   .post(userCtrl.create)
 
 userRouter.route('/:id')
-  .get(userCtrl.profile)
+  .get(userCtrl.show)
   .delete(userCtrl.destroy)
   .patch(userCtrl.update)
 
