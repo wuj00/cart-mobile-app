@@ -10,9 +10,9 @@ module.exports = {
   destroy: function(req, res){
     Comment.findOne({_id: req.params.id}, function(err, comment){
       if(err) throw err
-      Comment.remove({_id: req.params.id}, function(err){
+      comment.remove({_id: req.params.id}, function(err){
         if(err) throw err
-        res.json(comment)
+        res.json({success: true, message: "comment deleted!"})
       })
     })
   },
@@ -29,9 +29,9 @@ module.exports = {
   },
   create: function(req,res){
     var comment = new Comment(req.body)
-    comment.save(function(err,comment){
+    comment.save(function(err,new_comment){
       if(err) throw err
-      res.json(user)
+      res.json(new_comment)
     })
   }
 }

@@ -10,10 +10,12 @@ module.exports = {
     },
 
     delete: function(req, res){
-        Like.findOneAndRemove({_id: req.params.id},
-        function(err){
-            if(err) return console.log(err)
-            res.json({success: true, message: "Unliked!"})
+        Like.findOne({_id: req.params.id}, function(err, like){
+          if (err) throw err
+          like.remove({_id: req.params.id}, function(err){
+            if (err) throw err
+            res.json({success: true, message: "Unliked!!"})
+          })
         })
-    }
+      }
 }//closing
