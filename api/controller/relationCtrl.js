@@ -9,7 +9,7 @@ module.exports = {
       res.json(product)
     })
   },
-  delete: function(req,res){
+  destroy: function(req,res){
     Relation.findOne({_id: req.params.id}, (function(err, relation){
       if(err) throw err
       relation.remove({_id: req.params.id}, function(err){

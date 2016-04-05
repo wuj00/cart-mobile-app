@@ -19,5 +19,4 @@ function PostCtrl(){
 
 function NotificationsCtrl(){}
 
-profileCtrl
 function ProfileCtrl(userService){}
