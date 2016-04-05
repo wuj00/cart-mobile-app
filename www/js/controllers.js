@@ -5,7 +5,19 @@ angular.module('starter.controllers', [])
   .controller('NotificationsCtrl', NotificationsCtrl)
   .controller('ProfileCtrl', ProfileCtrl)
 
+
 function HomeCtrl(){
-  var self = this
-  self.title = "This is the home ctrl title"
+  var vm = this
+  vm.title = "This is the home ctrl title"
 }
+
+function SearchCtrl(){
+}
+
+function PostCtrl(){
+}
+
+function NotificationsCtrl(){}
+
+profileCtrl
+function ProfileCtrl(userService){}

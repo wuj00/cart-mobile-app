@@ -12,6 +12,10 @@ var user_schema = Schema({
   products: [{type: ObjectId, ref: "Product"}],
   comments_posted: [{type: ObjectId, ref: "Comment"}],
   liked_products: [{type: ObjectId, ref: "Like"}],
+  // whos following you
+  followers: [{type: ObjectId, ref: "Relation"}],
+  // who you're following
+  following: [{type: ObjectId, ref: "Relation"}],
   picture: String,
   description: String
 })

@@ -5,7 +5,9 @@ var
 
 
 var relation_schema = Schema({
+  // current user
   _follower: {type: ObjectId, ref: "User"},
+  // other user
   _followed: {type: ObjectId, ref: "User"}
 })
 

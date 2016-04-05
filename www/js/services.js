@@ -10,22 +10,19 @@ function userService($http){
     update: update,
   }
 
-  function index($http){
-    $http({
-      method: "GET",
-      url: '/users'
-    }).then(function success(res){
-      console.log("Success");
-    }), function error(res){
-      console.log("Error");
-    }
+  function index(){
+    return $http.get('/users')
   }
-  function show($http){
-    $http({
-      method: "GET",
-      url: "/users/:id"
-    }).then(function success(res){
-
-    })
+  function show(id){
+    return $http.get('/users/' + id)
+  }
+  function create(data){
+    return $http.post('/users', data)
+  }
+  function update(id, data){
+    return $http.patch('/users/' + id, data)
+  }
+  function destroy(id){
+    return $http.delete('/users/' + id)
   }
 }
