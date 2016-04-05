@@ -1,6 +1,8 @@
 angular.module('starter.controllers', [])
 
-.controller('HomeCtrl', function($scope) {})
+.controller('HomeCtrl', function($scope) {
+  
+})
 
 .controller('SearchCtrl', function($scope) {
   // With the new view caching in Ionic, Controllers are only called

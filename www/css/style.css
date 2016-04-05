@@ -5,7 +5,7 @@
 }
 
 .middle-icon {
-  background:black;
+  background: black;
 }
 
 ion-tabs.tabs-color-active-positive .tab-item {
@@ -14,4 +14,7 @@ ion-tabs.tabs-color-active-positive .tab-item {
 ion-tabs.tabs-color-active-positive .tab-item.tab-item-active, ion-tabs.tabs-color-active-positive .tab-item.active, ion-tabs.tabs-color-active-positive .tab-item.activated  {
   color: white;
   background: black;
+}
+.bar.bar-stable {
+  color:rgb(135, 135, 135);
 }
