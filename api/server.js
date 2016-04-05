@@ -4,6 +4,7 @@ var
   mongoose = require('mongoose'),
   body_parser = require('body-parser'),
   morgan = require('morgan'),
+  path = require('path'),
   config = require('./config.js'),
   port = process.env.PORT || 8100,
   // bcrypt = require('bcrypt-nodejs'),
@@ -23,9 +24,13 @@ mongoose.connect(config.databaseUrl, function(err){
 //middleware
 app.use(body_parser.urlencoded({extended: false}))
 app.use(body_parser.json())
+app.use(express.static(path.join(__dirname, '../www')))
 
 app.use(morgan("dev"))
 
+app.get('/', function(req, res){
+  res.sendFile(path.join(__dirname, '../www/index.html'))
+})
 
 app.use('/users', userRoutes)
 app.use('/likes', likesRoutes)

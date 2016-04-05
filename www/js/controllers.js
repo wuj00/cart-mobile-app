@@ -5,6 +5,7 @@ angular.module('starter.controllers', [])
   .controller('NotificationsCtrl', NotificationsCtrl)
   .controller('ProfileCtrl', ProfileCtrl)
 
+// HomeCtrl.$inject = ["$stateParams", ""]
 
 function HomeCtrl(){
   var vm = this
