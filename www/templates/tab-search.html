@@ -1,12 +1,24 @@
 <ion-view view-title="Search">
-  <ion-content>
-    <h1>All Catagories</h1>
-    <div ng-repeat="c in sc.allCatagories">
-      <div>{{c.name}}</div>
-    </div>
-    <h1>All Products</h1>
-    <div ng-repeat="p in sc.allProducts">
-      <div>{{ p.name }}</div>
-    </div>
-  </ion-content>
+    <ion-nav-buttons side="secondary">
+     <button class="buttons button-icon ion-android-search" ng-click="showFilterBar()"></button>
+    </ion-nav-buttons>
+
+    <ion-content class="padding">
+        <ion-refresher pulling-text="Update Date" on-refresh="doRefresh()"></ion-refresher>
+            <ion-list>
+            <ion-item collection-repeat="value in values | groupByLastName" divider-collection-repeat>
+            <p>First Name : {{value.first_name}}</p>
+            <p>Last Name : {{value.last_name}}</p>
+
+            <h1>All Catagories</h1>
+            <div ng-repeat="c in sc.allCatagories">
+                <div>{{c.name}}</div>
+            </div>
+            <h1>All Products</h1>
+            <div ng-repeat="p in sc.allProducts">
+                <div>{{ p.name }}</div>
+            </div>
+        </ion-item>
+       </ion-list>
+    </ion-content>
 </ion-view>

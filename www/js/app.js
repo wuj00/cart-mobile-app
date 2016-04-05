@@ -5,7 +5,7 @@
 // the 2nd parameter is an array of 'requires'
 // 'starter.services' is found in services.js
 // 'starter.controllers' is found in controllers.js
-angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
+angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', 'jett.ionic.filter.bar'])
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
@@ -21,6 +21,27 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
       StatusBar.styleDefault();
     }
   });
+})
+
+.controller('repeaterCtrl', function ($scope, $ionicFilterBar) {
+  $scope.values = window.Values.sort(function (a, b) {
+    return a.first_name > b.first_name ? 1 : -1;
+  });
+
+  $scope.doRefresh = function () {
+    $scope.values = window.Values;
+    $scope.$broadcast('scroll.refreshComplete');
+  }
+
+  $scope.showFilterBar = function () {
+    filterBar = $ionicFilterBar.show({
+      items: $scope.values,
+      update: function (filteredItems) {
+        $scope.values = filteredItems
+      }
+      //filterProperties : 'first_name'
+    });
+  }
 })
 
 .config(function($stateProvider, $urlRouterProvider) {
