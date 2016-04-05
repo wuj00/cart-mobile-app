@@ -17,6 +17,7 @@ module.exports = {
     var new_product = new Product(req.body)
     new_product.save(function(err, product){
       if (err) throw err
+      console.log('this is in save')
       res.json({success: true, message: "successfully created product", product: product})
     })
   },
