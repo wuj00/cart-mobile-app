@@ -5,19 +5,28 @@ angular.module('starter.controllers', [])
   .controller('NotificationsCtrl', NotificationsCtrl)
   .controller('ProfileCtrl', ProfileCtrl)
 
-// HomeCtrl.$inject = ["$stateParams", ""]
 
 function HomeCtrl(){
-  var vm = this
-  vm.title = "This is the home ctrl title"
+  var self = this
+  self.title = "This is the home ctrl title"
 }
 
 function SearchCtrl(){
+  var self = this
+  self.title = "Search Ctrl title"
 }
 
 function PostCtrl(){
+  var self = this
+  self.title = "Post Ctrl yeah"
 }
 
-function NotificationsCtrl(){}
+function NotificationsCtrl(){
+  var self = this
+  self.title = "Notifications Ctrl yup"
+}
 
-function ProfileCtrl(userService){}
+function ProfileCtrl(){
+  var self = this
+  self.title = "Profile Ctrl yes"
+}

@@ -45,7 +45,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
     views: {
       'tab-home': {
         templateUrl: 'templates/tab-home.html',
-        controller: 'HomeCtrl'
+        controller: 'HomeCtrl as hc'
       }
     }
   })
@@ -55,7 +55,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
       views: {
         'tab-search': {
           templateUrl: 'templates/tab-search.html',
-          controller: 'SearchCtrl'
+          controller: 'SearchCtrl as sc'
         }
       }
     })
@@ -64,7 +64,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
       views: {
         'tab-post': {
           templateUrl: 'templates/tab-post.html',
-          controller: 'PostCtrl'
+          controller: 'PostCtrl as pc'
         }
       }
     })
@@ -74,7 +74,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
     views: {
       'tab-notifications': {
         templateUrl: 'templates/tab-notifications.html',
-        controller: 'NotificationsCtrl'
+        controller: 'NotificationsCtrl as nc'
       }
     }
   })
@@ -83,7 +83,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
     views: {
       'tab-profile': {
         templateUrl: 'templates/tab-profile.html',
-        controller: 'ProfileCtrl'
+        controller: 'ProfileCtrl as pc'
       }
     }
   })
