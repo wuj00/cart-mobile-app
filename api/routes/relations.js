@@ -8,6 +8,6 @@ relationRouter.route('/')
   .post(relationCtrl.create)
 
 relationRouter.route('/:id')
-  .delete(relationCtrl.destroy)
+  .delete(relationCtrl.delete)
 
 module.exports = relationRouter

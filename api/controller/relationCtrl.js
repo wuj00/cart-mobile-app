@@ -10,12 +10,12 @@ module.exports = {
     })
   },
   delete: function(req,res){
-    Relation.findOne({_id: req.params.id}).exec(function(err, relation){
+    Relation.findOne({_id: req.params.id}, (function(err, relation){
       if(err) throw err
       relation.remove({_id: req.params.id}, function(err){
         res.json({success: true, message: "Deleted"})
       })
-    })
+    }))
   }
 
 }
