@@ -8,7 +8,7 @@ angular.module('starter.services', [])
 .factory('reviewService', reviewService)
 
 function userService($http){
-  var apiUrl = 'http://localhost:8100/users/'
+  var apiUrl = '/users/'
   var service = {
     index: index,
     show: show,
