@@ -43,3 +43,87 @@ ion-tabs.tabs-color-active-positive .tab-item.tab-item-active, ion-tabs.tabs-col
   background: -moz-linear-gradient( #a3d3c7, #39aea9); /* For Firefox 3.6 to 15 */
   background: linear-gradient( #a3d3c7, #39aea9); /* Standard syntax (must be last) */
 }
+
+.text-white{
+
+  color:#fff;
+
+}
+
+
+
+.profile-pic {
+
+    width: 30%;
+
+    height: auto;
+
+    display: block;
+
+    margin-top: -50%;
+
+    margin-left: auto;
+
+    margin-right: auto;
+
+    margin-bottom: 20%;
+
+    border-radius: 4em 4em 4em / 4em 4em;
+
+}
+.profile ul {
+
+    list-style-type: none;
+
+}
+
+
+
+.imageholder {
+
+    width: 100%;
+
+    height: auto;
+
+    display: block;
+
+    margin-left: auto;
+
+    margin-right: auto;
+
+}
+
+
+
+.profile li img {
+
+    float: left;
+
+    border: 5px solid #fff;
+
+    width: 30%;
+
+    height: 10%;
+
+    -webkit-transition: box-shadow 0.5s ease;
+
+    -moz-transition: box-shadow 0.5s ease;
+
+    -o-transition: box-shadow 0.5s ease;
+
+    -ms-transition: box-shadow 0.5s ease;
+
+    transition: box-shadow 0.5s ease;
+
+}
+
+
+
+.profile li img:hover {
+
+    -webkit-box-shadow: 0px 0px 7px rgba(255, 255, 255,
+    0.9);
+
+    box-shadow: 0px 0px 7px rgba(255, 255, 255, 0.9);
+
+}
