@@ -23,6 +23,7 @@ function MainCtrl($stateParams){
 function HomeCtrl($stateParams, userService, productService){
   var self = this
   self.productsArray = []
+  self.peopleArray = []
 
   self.title = "This is the home ctrl title"
   // $stateParams.user = "5702f9632fe016840c2933fa"
@@ -34,9 +35,12 @@ function HomeCtrl($stateParams, userService, productService){
       console.log(result.following[i]._followed,  i );
     }
     userService.show(result.following[i]._followed).success(function(result){
+      self.peopleArray.push(result)
       for(var p=0; p < result.products.length; p++) {
       if(result){
         // the person your following
+
+        console.log(self.peopleArray);
       }
       productService.show(result.products[p]).success(function(result){
         if(result){
