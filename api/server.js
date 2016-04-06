@@ -16,14 +16,12 @@ var
   relationRoutes = require('./routes/relations.js'),
   reviewRoutes = require('./routes/reviews.js'),
   cors = require('cors'),
-  dbUrl = process.env.MLAB_LINK || config.databaseUrl,
   dotenv = require('dotenv').load({silent: true})
 
-
-mongoose.connect(dbUrl, function(err){
+// console.log(process.env.MLAB_LINK)
+mongoose.connect(process.env.MLAB_LINK, function(err){
   if(err) throw err
-  console.log("Connected to mongodb " + dbUrl);
-})
+  console.log("Connected to mongodb " + process.env.MLAB_LINK)
 //middleware
 app.use(body_parser.urlencoded({extended: false}))
 app.use(body_parser.json())

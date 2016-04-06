@@ -14,10 +14,9 @@ NotificationsCtrl.$inject = ["$stateParams", "userService"]
 ProfileCtrl.$inject = ["$stateParams", "userService"]
 
 // MainCtrl
-// https://git.heroku.com/stark-wave-90063.git
 function MainCtrl($stateParams){
   var vm = this
-  vm.currentUserId = "570443322d0580e71b6a53f7"
+  vm.currentUserId = "570428cbe54eb0a80b4ea317"
 }
 
 // News Feed
