@@ -16,12 +16,12 @@ var
   relationRoutes = require('./routes/relations.js'),
   reviewRoutes = require('./routes/reviews.js'),
   cors = require('cors')
-  // dbUrl = process.env.MLABURL || LOCALURL
+  dbUrl = process.env.MLAB_LINK || config.databaseUrl
 
 
-mongoose.connect(config.mLabUrl, function(err){
+mongoose.connect(MLAB_LINK, function(err){
   if(err) throw err
-  console.log("Connected to mongodb", config.mLabUrl);
+  console.log("Connected to mongodb", MLAB_LINK);
 })
 //middleware
 app.use(body_parser.urlencoded({extended: false}))
@@ -30,7 +30,19 @@ app.use(express.static(path.join(__dirname, '../www')))
 
 app.use(morgan("dev"))
 
-app.use(cors())
+app.use(function (req, res, next) {
+    res.header('Cache-Control', 'no-cache, no-store, must-revalidate');
+    res.header('Pragma', 'no-cache');
+    res.header('Expires', 0 );
+    res.header('Access-Control-Allow-Origin', '*');
+    res.header('Access-Control-Allow-Methods', 'GET, PUT, POST, DELETE, OPTIONS');
+    res.header('Access-Control-Allow-Headers', 'Content-Type');
+    if (req.method === 'Options') {
+      res.send(200);
+    } else {
+      return next();
+    }
+  })
 
 app.get('/', function(req, res){
   res.sendFile(path.join(__dirname, '../www/index.html'))
@@ -46,5 +58,5 @@ app.use('/reviews', reviewRoutes)
 
 app.listen(port, function(err){
   if(err) throw err
-  console.log("Listening to port 8100");
+  console.log("Listening to port" + port);
 })
