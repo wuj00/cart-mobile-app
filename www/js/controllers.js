@@ -8,8 +8,8 @@ angular.module('starter.controllers', [])
 
 MainCtrl.$inject = ["$stateParams"]
 HomeCtrl.$inject = ["$stateParams", "userService"]
-SearchCtrl.$inject = ["productService", "categoryService", 'userService']
-PostCtrl.$inject = ["$stateParams", "userService", "productService"]
+SearchCtrl.$inject = ["productService", "categoryService"]
+PostCtrl.$inject = ["$stateParams", "userService", "productService", "$cordovaCamera", "$scope"]
 NotificationsCtrl.$inject = ["$stateParams", "userService"]
 ProfileCtrl.$inject = ["$stateParams", "userService"]
 
@@ -58,10 +58,31 @@ function SearchCtrl(productService, categoryService, userService){
 }
 
 // Post a new product
-function PostCtrl($stateParams, userService, productService){
+function PostCtrl($stateParams, userService, productService, $cordovaCamera, $scope){
+  // console.log($scope.$parent.main)
   var self = this
   self.title = "Post Ctrl yeah"
+  self.takePhoto = function(){
+    var newProduct = {}
+    var picOptions = {
+      targetWidth: 300,
+      targetHeight: 300
+    }
 
+    $cordovaCamera.getPicture(picOptions).then(function(data){
+      self.newProduct.photos = [data]
+    })
+  }
+
+  self.createProduct = function(){
+    self.newProduct._creator = $scope.$parent.main.currentUserId
+    self.newProduct.catagory = "5702f9a32fe016840c2933fc"
+    console.log(self.newProduct, 'this is objs')
+    productService.create(self.newProduct).success(function(results){
+      console.log(results)
+      self.resultFromPost = results
+    })
+  }
 }
 
 // show updates
