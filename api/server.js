@@ -16,12 +16,12 @@ var
   relationRoutes = require('./routes/relations.js'),
   reviewRoutes = require('./routes/reviews.js'),
   cors = require('cors')
-  // dbUrl = process.env.MLABURL || LOCALURL
+  dbUrl = process.env.MLAB_LINK || config.databaseUrl
 
 
-mongoose.connect(config.mLabUrl, function(err){
+mongoose.connect(MLAB_LINK, function(err){
   if(err) throw err
-  console.log("Connected to mongodb", config.mLabUrl);
+  console.log("Connected to mongodb", MLAB_LINK);
 })
 //middleware
 app.use(body_parser.urlencoded({extended: false}))
@@ -58,5 +58,5 @@ app.use('/reviews', reviewRoutes)
 
 app.listen(port, function(err){
   if(err) throw err
-  console.log("Listening to port 8100");
+  console.log("Listening to port" + port);
 })
