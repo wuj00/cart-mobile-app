@@ -19,7 +19,8 @@ module.exports = {
   create_product: function(req, res){
 
     function toS3(fileName, req){
-
+      console.log(fileName, 'this is file name is tos3 <<<<<<<<<<<<<<<<')
+      console.log(req, 'this is req param is tos3 <<<<<<<<<<<<<<<<')
       //CREATE NEW Photo
      //var path = absolutePath + '/public/images/users/' + req.session.userId + '/';
      var path = './public/images/' // change to public/images
@@ -41,6 +42,7 @@ module.exports = {
        }
      })
      form.on('file', function(name, file) {
+       console.log('got to form on name file <<<< !!!')
          var type = file.headers['content-type'];
          type = type.split('/');
          type = type[1];
