@@ -16,7 +16,7 @@ ProfileCtrl.$inject = ["$stateParams", "userService"]
 // MainCtrl
 function MainCtrl($stateParams){
   var vm = this
-  vm.currentUserId = "570443322d0580e71b6a53f7"
+  vm.currentUserId = "570471cebae3c04b25210205"
 }
 
 // News Feed
@@ -76,7 +76,7 @@ function PostCtrl($stateParams, userService, productService, $cordovaCamera, $sc
 
   self.createProduct = function(){
     self.newProduct._creator = $scope.$parent.main.currentUserId
-    self.newProduct.catagory = "5702f9a32fe016840c2933fc"
+    self.newProduct.catagory = "57047226bae3c04b25210206"
     console.log(self.newProduct, 'this is objs')
     productService.create(self.newProduct).success(function(results){
       console.log(results)
