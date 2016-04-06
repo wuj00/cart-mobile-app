@@ -18,3 +18,25 @@ ion-tabs.tabs-color-active-positive .tab-item.tab-item-active, ion-tabs.tabs-col
 .bar.bar-stable {
   color:rgb(135, 135, 135);
 }
+
+
+
+/*ICONS-----------------*/
+
+.tabs .tab-item .icon.icon-shopping-cart {
+  background-repeat: no-repeat;
+  background-position: 50%;
+  height: 85%;
+  margin-top: 1.5px;
+  background-image: url('../img/cart-icon-active.png');
+  background-size:contain;
+}
+
+.tabs .tab-item .icon.icon-profile {
+  background-repeat: no-repeat;
+  background-position: 50%;
+  height: 85%;
+  margin-top: 1.5px;
+  background-image: url('../img/profile-icon-active.png');
+  background-size:contain;
+}

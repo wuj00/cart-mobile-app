@@ -11,24 +11,23 @@ navigation history that also transitions its views in and out.
   </ion-tab>
 
   <!-- Search Tab -->
-  <ion-tab icon-off="ion-ios-search" icon-on="ion-ios-search-strong" ui-sref="tab.search">
+  <ion-tab icon-off="ion-android-search" icon-on="ion-android-search" ui-sref="tab.search">
     <ion-nav-view name="tab-search"></ion-nav-view>
   </ion-tab>
 
   <!-- Post tab -->
-  <ion-tab icon-off="ion-paper-airplane" icon-on="ion-paper-airplane" ui-sref="tab.post-user({user: main.currentUserId})">
+  <ion-tab class="icon-shopping-cart" icon-off="icon-shopping-cart" icon-on="icon-shopping-cart" ui-sref="tab.post-user({user: main.currentUserId})">
     <ion-nav-view name="tab-post-user"></ion-nav-view>
   </ion-tab>
 
   <!-- Notifications Tab -->
-  <ion-tab icon-off="ion-android-alert" icon-on="ion-android-alert" ui-sref="tab.notifications-user({user: main.currentUserId})">
+  <ion-tab icon-off="ion-quote" icon-on="ion-quote" ui-sref="tab.notifications-user({user: main.currentUserId})">
     <ion-nav-view name="tab-notifications-user"></ion-nav-view>
   </ion-tab>
 
   <!-- Profile Tab -->
-  <ion-tab icon-off="ion-ios-body-outline" icon-on="ion-ios-body" ui-sref="tab.profile-user({user: main.currentUserId})">
+  <ion-tab class="icon-profile" icon-off="icon-profile" icon-on="icon-profile" ui-sref="tab.profile-user({user: main.currentUserId})">
     <ion-nav-view name="tab-profile-user"></ion-nav-view>
   </ion-tab>
-
 
 </ion-tabs>
