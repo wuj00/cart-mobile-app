@@ -11,6 +11,7 @@ ion-tabs.tabs-color-active-positive .tab-item.tab-item-active, ion-tabs.tabs-col
   color: white;
   background: black;
 }
+
 .bar.bar-stable {
   background: #e5efc1 ; /* For browsers that do not support gradients */
   background: -webkit-linear-gradient( #a3d3c7, #39aea9); /* For Safari 5.1 to 6.0 */
@@ -22,16 +23,21 @@ ion-tabs.tabs-color-active-positive .tab-item.tab-item-active, ion-tabs.tabs-col
   color: white;
   font-family: Diamonds;
   font-weight: bold;
+  font-size: 18px;
+  line-height: 38px;
 }
 
 .theme {
    background:  #39AEA9;
 }
 
-.button-clear.button-clear {
+.bar .button.button-clear {
   color: white;
+  font-family: Diamonds;
   font-weight: bold;
+  font-size: 15px;
 }
+
 .bar {
   background: #e5efc1 ; /* For browsers that do not support gradients */
   background: -webkit-linear-gradient( #a3d3c7, #39aea9); /* For Safari 5.1 to 6.0 */
@@ -48,8 +54,9 @@ ion-tabs.tabs-color-active-positive .tab-item.tab-item-active, ion-tabs.tabs-col
   background-position: 50%;
   height: 85%;
   margin-top: 1.5px;
+  margin-left: 5px;
   background-image: url('../img/cart-icon-active.png');
-  background-size:contain;
+  background-size: contain;
 }
 
 .tabs .tab-item .icon.icon-profile {
@@ -58,5 +65,5 @@ ion-tabs.tabs-color-active-positive .tab-item.tab-item-active, ion-tabs.tabs-col
   height: 85%;
   margin-top: 1.5px;
   background-image: url('../img/profile-icon-active.png');
-  background-size:contain;
+  background-size: contain;
 }
