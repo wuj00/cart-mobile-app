@@ -30,7 +30,19 @@ app.use(express.static(path.join(__dirname, '../www')))
 
 app.use(morgan("dev"))
 
-app.use(cors())
+app.use(function (req, res, next) {
+    res.header('Cache-Control', 'no-cache, no-store, must-revalidate');
+    res.header('Pragma', 'no-cache');
+    res.header('Expires', 0 );
+    res.header('Access-Control-Allow-Origin', '*');
+    res.header('Access-Control-Allow-Methods', 'GET, PUT, POST, DELETE, OPTIONS');
+    res.header('Access-Control-Allow-Headers', 'Content-Type');
+    if (req.method === 'Options') {
+      res.send(200);
+    } else {
+      return next();
+    }
+  })
 
 app.get('/', function(req, res){
   res.sendFile(path.join(__dirname, '../www/index.html'))
