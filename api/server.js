@@ -14,7 +14,8 @@ var
   commentRoutes = require('./routes/comments.js'),
   likesRoutes = require('./routes/likes.js'),
   relationRoutes = require('./routes/relations.js'),
-  reviewRoutes = require('./routes/reviews.js')
+  reviewRoutes = require('./routes/reviews.js'),
+  cors = require('cors')
   // dbUrl = process.env.MLABURL || LOCALURL
 
 
@@ -28,6 +29,8 @@ app.use(body_parser.json())
 app.use(express.static(path.join(__dirname, '../www')))
 
 app.use(morgan("dev"))
+
+app.use(cors())
 
 app.get('/', function(req, res){
   res.sendFile(path.join(__dirname, '../www/index.html'))
