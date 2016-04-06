@@ -14,6 +14,7 @@ NotificationsCtrl.$inject = ["$stateParams", "userService"]
 ProfileCtrl.$inject = ["$stateParams", "userService"]
 
 // MainCtrl
+// https://git.heroku.com/stark-wave-90063.git
 function MainCtrl($stateParams){
   var vm = this
   vm.currentUserId = "570471cebae3c04b25210205"

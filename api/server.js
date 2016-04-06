@@ -15,13 +15,14 @@ var
   likesRoutes = require('./routes/likes.js'),
   relationRoutes = require('./routes/relations.js'),
   reviewRoutes = require('./routes/reviews.js'),
-  cors = require('cors')
-  dbUrl = process.env.MLAB_LINK || config.databaseUrl
+  cors = require('cors'),
+  dbUrl = process.env.MLAB_LINK || config.databaseUrl,
+  dotenv = require('dotenv').load({silent: true})
 
 
-mongoose.connect(MLAB_LINK, function(err){
+mongoose.connect(dbUrl, function(err){
   if(err) throw err
-  console.log("Connected to mongodb", MLAB_LINK);
+  console.log("Connected to mongodb " + dbUrl);
 })
 //middleware
 app.use(body_parser.urlencoded({extended: false}))
@@ -58,5 +59,5 @@ app.use('/reviews', reviewRoutes)
 
 app.listen(port, function(err){
   if(err) throw err
-  console.log("Listening to port" + port);
+  console.log("Listening to port " + port);
 })
