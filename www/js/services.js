@@ -36,7 +36,7 @@ function userService($http){
   }
 }
 function relationService($http){
-  var apiUrl = 'http://localhost:8100/relations/'
+  var apiUrl = '/relations/'
   var service = {
     create: create,
     delete: destroy
@@ -52,7 +52,7 @@ function relationService($http){
 }
 
 function productService($http){
-  var apiUrl = 'http://localhost:8100/products/'
+  var apiUrl = '/products/'
   var service = {
     index: index,
     show: show,
@@ -80,7 +80,7 @@ function productService($http){
 }
 
 function likeService($http){
-  var apiUrl = 'http://localhost:8100/likes/'
+  var apiUrl = '/likes/'
   var service = {
     create: create,
     delete: destroy
@@ -96,7 +96,7 @@ function likeService($http){
 }
 
 function commentService($http){
-  var apiUrl = 'http://localhost:8100/comments/'
+  var apiUrl = '/comments/'
   var service = {
     index: index,
     create: create,
@@ -120,7 +120,7 @@ function commentService($http){
 }
 
 function categoryService($http){
-  var apiUrl = 'http://localhost:8100/category/'
+  var apiUrl = '/category/'
   var service = {
     index: index,
     create: create,
@@ -148,7 +148,7 @@ function categoryService($http){
 }
 
 function reviewService($http){
-  var apiUrl = 'http://localhost:8100/reviews/'
+  var apiUrl = '/reviews/'
   var service = {
     create: create,
     delete: destroy
