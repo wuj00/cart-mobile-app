@@ -7,8 +7,8 @@ angular.module('starter.controllers', [])
   .controller('ProfileCtrl', ProfileCtrl)
 
 MainCtrl.$inject = ["$stateParams"]
-HomeCtrl.$inject = ["$stateParams", "userService"]
-SearchCtrl.$inject = ["productService", "categoryService"]
+HomeCtrl.$inject = ["$stateParams", "userService", "productService"]
+SearchCtrl.$inject = ["productService", "categoryService", "userService"]
 PostCtrl.$inject = ["$stateParams", "userService", "productService", "$cordovaCamera", "$scope"]
 NotificationsCtrl.$inject = ["$stateParams", "userService"]
 ProfileCtrl.$inject = ["$stateParams", "userService"]
@@ -17,30 +17,40 @@ ProfileCtrl.$inject = ["$stateParams", "userService"]
 function MainCtrl($stateParams){
   var vm = this
   vm.currentUserId = "570428cbe54eb0a80b4ea317"
-
-// News Feed
-function HomeCtrl($stateParams, userService){
-  var self = this
-  self.title = "This is the home ctrl title"
-  // $stateParams.user = "5702f9632fe016840c2933fa"
-  // self.userShow = function(){
-  userService.show($stateParams.user).success(function(result){
-    if (result){
-      console.log(result)
-      self.user = result
-      self.otherUser = result.following._followed
-
-    }
-    userService.show(self.otherUser).success(function(result){
-      if(result){
-        console.log(result);
-        self.userSearch = result
-      }
-    })
-  })
-// }
 }
 
+// News Feed
+function HomeCtrl($stateParams, userService, productService){
+  var self = this
+  self.productsArray = []
+
+  self.title = "This is the home ctrl title"
+  // $stateParams.user = "5702f9632fe016840c2933fa"
+  userService.show($stateParams.user).success(function(result){
+    for(var i=0; i < result.following.length; i++) {
+    if (result){
+      // your user
+      self.user = result
+      console.log(result.following[i]._followed,  i );
+    }
+    userService.show(result.following[i]._followed).success(function(result){
+      for(var p=0; p < result.products.length; p++) {
+      if(result){
+        // the person your following
+      }
+      productService.show(result.products[p]).success(function(result){
+        if(result){
+          console.log(result);
+          // the person your followings product
+          self.productsArray.push(result)
+          console.log(self.productsArray);
+        }
+      })
+    }
+    })
+  }
+})
+}
 // Search Catagory
 function SearchCtrl(productService, categoryService, userService){
   var self = this

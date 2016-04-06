@@ -49,8 +49,6 @@ ion-tabs.tabs-color-active-positive .tab-item.tab-item-active, ion-tabs.tabs-col
   margin-top: 1.5px;
   background-image: url('../img/cart-icon-active.png');
   background-size:contain;
-  background: black;
-  color: white;
 }
 
 .tabs .tab-item .icon.icon-profile {

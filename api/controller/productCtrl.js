@@ -10,7 +10,7 @@ module.exports = {
   one_product: function(req, res){
     Product.findById(req.params.id).exec(function(err, product){
       if (err) throw err
-      res.json({success: true, product: product})
+      res.json(product)
     })
   },
   create_product: function(req, res){

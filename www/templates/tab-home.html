@@ -2,15 +2,16 @@
   <ion-content>
     <div class="list card">
 
-  <div ng-repeat="p in HomeCtrl.userSearch.products"class="item item-avatar">
-    <img src="{{p._creator.picture}}">
+  <div ng-repeat="p in HomeCtrl.productsArray"class="item item-avatar">
+    <img src="">
     <h2>{{p._creater.name}}</h2>
-    <p>{{date_posted}}</p>
+    <p>{{p.date_posted}}</p>
   </div>
 
   <div class="item item-body">
-    <img class="full-image" src="{{p.photo[0]}}">
-    <p>{{description}}
+    <img class="full-image" src="">
+    <h4>{{p.name}}</h4>
+    <p>{{p.description}}
     </p>
     <p>
       <a href="#" class="subdued">1 Like</a>
