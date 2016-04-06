@@ -4,11 +4,6 @@
   background: rgb(33, 33, 33);
 }
 
-.middle-icon {
-  background:  black;
-  color: white;
-}
-
 ion-tabs.tabs-color-active-positive .tab-item {
   color: rgb(135, 135, 135);
 }
@@ -42,4 +37,27 @@ ion-tabs.tabs-color-active-positive .tab-item.tab-item-active, ion-tabs.tabs-col
   background: -o-linear-gradient( #a3d3c7, #39aea9); /* For Opera 11.1 to 12.0 */
   background: -moz-linear-gradient( #a3d3c7, #39aea9); /* For Firefox 3.6 to 15 */
   background: linear-gradient( #a3d3c7, #39aea9); /* Standard syntax (must be last) */
+}
+
+
+
+/*ICONS-----------------*/
+.tabs .tab-item .icon.icon-shopping-cart {
+  background-repeat: no-repeat;
+  background-position: 50%;
+  height: 85%;
+  margin-top: 1.5px;
+  background-image: url('../img/cart-icon-active.png');
+  background-size:contain;
+  background: black;
+  color: white;
+}
+
+.tabs .tab-item .icon.icon-profile {
+  background-repeat: no-repeat;
+  background-position: 50%;
+  height: 85%;
+  margin-top: 1.5px;
+  background-image: url('../img/profile-icon-active.png');
+  background-size:contain;
 }
