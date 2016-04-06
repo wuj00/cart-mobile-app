@@ -22,6 +22,7 @@ var
 mongoose.connect(process.env.MLAB_LINK, function(err){
   if(err) throw err
   console.log("Connected to mongodb " + process.env.MLAB_LINK)
+})
 //middleware
 app.use(body_parser.urlencoded({extended: false}))
 app.use(body_parser.json())
