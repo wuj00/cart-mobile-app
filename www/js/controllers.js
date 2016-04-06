@@ -5,7 +5,7 @@ angular.module('starter.controllers', [])
   .controller('PostCtrl', PostCtrl)
   .controller('NotificationsCtrl', NotificationsCtrl)
   .controller('ProfileCtrl', ProfileCtrl)
-
+  
 MainCtrl.$inject = ["$stateParams"]
 HomeCtrl.$inject = ["$stateParams", "userService", "productService"]
 SearchCtrl.$inject = ["productService", "categoryService", "userService"]
