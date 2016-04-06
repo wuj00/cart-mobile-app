@@ -8,9 +8,9 @@ module.exports = {
     })
   },
   one_product: function(req, res){
-    Product.findById(req.params.id).exec(function(err, product){
+    Product.findById(req.params.id).populate('_creator').exec(function(err, product){
       if (err) throw err
-      res.json({success: true, product: product})
+      res.json(product)
     })
   },
   create_product: function(req, res){

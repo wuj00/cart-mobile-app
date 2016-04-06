@@ -7,8 +7,8 @@ angular.module('starter.controllers', [])
   .controller('ProfileCtrl', ProfileCtrl)
 
 MainCtrl.$inject = ["$stateParams"]
-HomeCtrl.$inject = ["$stateParams", "userService"]
-SearchCtrl.$inject = ["productService", "categoryService"]
+HomeCtrl.$inject = ["$stateParams", "userService", "productService"]
+SearchCtrl.$inject = ["productService", "categoryService", "userService"]
 PostCtrl.$inject = ["$stateParams", "userService", "productService", "$cordovaCamera", "$scope"]
 NotificationsCtrl.$inject = ["$stateParams", "userService"]
 ProfileCtrl.$inject = ["$stateParams", "userService"]
@@ -17,32 +17,45 @@ ProfileCtrl.$inject = ["$stateParams", "userService"]
 // https://git.heroku.com/stark-wave-90063.git
 function MainCtrl($stateParams){
   var vm = this
-  vm.currentUserId = "570471cebae3c04b25210205"
+  vm.currentUserId = "570443322d0580e71b6a53f7"
 }
 
 // News Feed
-function HomeCtrl($stateParams, userService){
+function HomeCtrl($stateParams, userService, productService){
   var self = this
+  self.productsArray = []
+  self.peopleArray = []
+
   self.title = "This is the home ctrl title"
   // $stateParams.user = "5702f9632fe016840c2933fa"
-  // self.userShow = function(){
   userService.show($stateParams.user).success(function(result){
+    for(var i=0; i < result.following.length; i++) {
     if (result){
-      console.log(result)
+      // your user
       self.user = result
-      self.otherUser = result.following._followed
-
+      console.log(result.following[i]._followed,  i );
     }
-    userService.show(self.otherUser).success(function(result){
+    userService.show(result.following[i]._followed).success(function(result){
+      self.peopleArray.push(result)
+      for(var p=0; p < result.products.length; p++) {
       if(result){
-        console.log(result);
-        self.userSearch = result
-      }
-    })
-  })
-// }
-}
+        // the person your following
 
+        console.log(self.peopleArray);
+      }
+      productService.show(result.products[p]).success(function(result){
+        if(result){
+          console.log(result);
+          // the person your followings product
+          self.productsArray.push(result)
+          console.log(self.productsArray);
+        }
+      })
+    }
+    })
+  }
+})
+}
 // Search Catagory
 function SearchCtrl(productService, categoryService, userService){
   var self = this
