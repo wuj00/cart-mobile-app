@@ -15,12 +15,12 @@ var
   likesRoutes = require('./routes/likes.js'),
   relationRoutes = require('./routes/relations.js'),
   reviewRoutes = require('./routes/reviews.js')
+  // dbUrl = process.env.MLABURL || LOCALURL
 
 
-
-mongoose.connect(config.databaseUrl, function(err){
+mongoose.connect(config.mLabUrl, function(err){
   if(err) throw err
-  console.log("Connected to mongodb", config.databaseUrl);
+  console.log("Connected to mongodb", config.mLabUrl);
 })
 //middleware
 app.use(body_parser.urlencoded({extended: false}))
