@@ -24,12 +24,22 @@ function HomeCtrl($stateParams, userService){
   var self = this
   self.title = "This is the home ctrl title"
   // $stateParams.user = "5702f9632fe016840c2933fa"
+  // self.userShow = function(){
   userService.show($stateParams.user).success(function(result){
     if (result){
       console.log(result)
       self.user = result
+      self.otherUser = result.following._followed
+
     }
+    userService.show(self.otherUser).success(function(result){
+      if(result){
+        console.log(result);
+        self.userSearch = result
+      }
+    })
   })
+// }
 }
 
 // Search Catagory
