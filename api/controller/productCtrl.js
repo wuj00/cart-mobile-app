@@ -19,6 +19,8 @@ module.exports = {
   create_product: function(req, res){
 
     function toS3(fileName, req){
+      var fArray = fileName.split('')
+      fileName = fArray[fArray.length - 1]
       console.log(fileName, 'this is file name is tos3 <<<<<<<<<<<<<<<<')
       console.log(req, 'this is req param is tos3 <<<<<<<<<<<<<<<<')
       //CREATE NEW Photo
@@ -37,6 +39,7 @@ module.exports = {
          return;
      });
      form.on('progress', function(recv, total){
+       console.log('on progress ==========')
        if(total >= maxSize){
            this.emit('error');
        }
