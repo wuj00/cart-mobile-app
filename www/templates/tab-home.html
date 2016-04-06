@@ -1,10 +1,11 @@
 <ion-view view-title="Cart">
   <ion-content>
-    <div class="list card">
+    <div ng-repeat="p in hc.productsArray" class="list card">
 
-  <div ng-repeat="p in HomeCtrl.productsArray"class="item item-avatar">
+
+  <div  class="item item-avatar">
     <img src="">
-    <h2>{{p._creater.name}}</h2>
+    <h2>{{p._creator.name}}</h2>
     <p>{{p.date_posted}}</p>
   </div>
 
@@ -18,7 +19,6 @@
       <a href="#" class="subdued">5 Comments</a>
     </p>
   </div>
-
 </div>
   </ion-content>
 <ion-nav-bar class="bar-stable">

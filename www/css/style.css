@@ -19,7 +19,8 @@ ion-tabs.tabs-color-active-positive .tab-item.tab-item-active, ion-tabs.tabs-col
   background: linear-gradient( #a3d3c7, #39aea9); /* Standard syntax (must be last) */
 }
 .bar.bar-stable .title {
-  color: rgb(33, 33, 33);
+  color: white;
+  font-family: Diamonds;
   font-weight: bold;
 }
 
