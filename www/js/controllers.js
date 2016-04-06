@@ -16,7 +16,7 @@ ProfileCtrl.$inject = ["$stateParams", "userService"]
 // MainCtrl
 function MainCtrl($stateParams){
   var vm = this
-  vm.currentUserId = "5702f9632fe016840c2933fa"
+  vm.currentUserId = "570443322d0580e71b6a53f7"
 }
 
 // News Feed
@@ -24,16 +24,26 @@ function HomeCtrl($stateParams, userService){
   var self = this
   self.title = "This is the home ctrl title"
   // $stateParams.user = "5702f9632fe016840c2933fa"
+  // self.userShow = function(){
   userService.show($stateParams.user).success(function(result){
     if (result){
       console.log(result)
       self.user = result
+      self.otherUser = result.following._followed
+
     }
+    userService.show(self.otherUser).success(function(result){
+      if(result){
+        console.log(result);
+        self.userSearch = result
+      }
+    })
   })
+// }
 }
 
 // Search Catagory
-function SearchCtrl(productService, categoryService){
+function SearchCtrl(productService, categoryService, userService){
   var self = this
   self.title = "Search Ctrl title"
   productService.index().success(function(results){
@@ -41,6 +51,9 @@ function SearchCtrl(productService, categoryService){
   })
   categoryService.index().success(function(results){
     self.allCatagories = results.catagories
+  })
+  userService.index().success(function(results){
+    self.allUsers = results
   })
 }
 
