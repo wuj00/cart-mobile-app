@@ -81,7 +81,7 @@ function PostCtrl($stateParams, userService, productService, $cordovaCamera, $sc
       targetWidth: 300,
       targetHeight: 300
     }
-
+    //file:///var/mobile/Containers/Data/Application/A9F17893-BBFE-41AC-9BF1-0F8F9EAC9D00/tmp/cdv_photo_014.jpg
     $cordovaCamera.getPicture(picOptions).then(function(data){
       self.newProduct.photos = [data]
     })
