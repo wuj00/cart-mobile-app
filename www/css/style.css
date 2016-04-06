@@ -1,12 +1,7 @@
 /* Empty. Add your own CSS if you like */
 .tab-nav {
-  height: auto;
+  height: 35px;
   background: rgb(33, 33, 33);
-}
-
-.middle-icon {
-  background:  black;
-  color: white;
 }
 
 ion-tabs.tabs-color-active-positive .tab-item {
@@ -16,6 +11,7 @@ ion-tabs.tabs-color-active-positive .tab-item.tab-item-active, ion-tabs.tabs-col
   color: white;
   background: black;
 }
+
 .bar.bar-stable {
   background: #e5efc1 ; /* For browsers that do not support gradients */
   background: -webkit-linear-gradient( #a3d3c7, #39aea9); /* For Safari 5.1 to 6.0 */
@@ -24,22 +20,50 @@ ion-tabs.tabs-color-active-positive .tab-item.tab-item-active, ion-tabs.tabs-col
   background: linear-gradient( #a3d3c7, #39aea9); /* Standard syntax (must be last) */
 }
 .bar.bar-stable .title {
-  color: rgb(33, 33, 33);
+  color: white;
+  font-family: Diamonds;
   font-weight: bold;
+  font-size: 18px;
+  line-height: 38px;
 }
 
 .theme {
    background:  #39AEA9;
 }
 
-.button-clear.button-clear {
+.bar .button.button-clear {
   color: white;
+  font-family: Diamonds;
   font-weight: bold;
+  font-size: 15px;
 }
+
 .bar {
   background: #e5efc1 ; /* For browsers that do not support gradients */
   background: -webkit-linear-gradient( #a3d3c7, #39aea9); /* For Safari 5.1 to 6.0 */
   background: -o-linear-gradient( #a3d3c7, #39aea9); /* For Opera 11.1 to 12.0 */
   background: -moz-linear-gradient( #a3d3c7, #39aea9); /* For Firefox 3.6 to 15 */
   background: linear-gradient( #a3d3c7, #39aea9); /* Standard syntax (must be last) */
+}
+
+
+
+/*ICONS-----------------*/
+.tabs .tab-item .icon.icon-shopping-cart {
+  background-repeat: no-repeat;
+  background-position: 50%;
+  height: 85%;
+  margin-top: 1.5px;
+  margin-left: 5px;
+  background-image: url('../img/cart-icon-active.png');
+  background-size: contain;
+}
+
+.tabs .tab-item .icon.icon-profile {
+  background-repeat: no-repeat;
+  background-position: 50%;
+  height: 85%;
+  margin-top: 1.5px;
+  background-image: url('../img/profile-icon-active.png');
+  background-size: contain;
 }
