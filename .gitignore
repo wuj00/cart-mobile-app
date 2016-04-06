@@ -4,4 +4,5 @@
 node_modules/
 platforms/
 plugins/
-config.js/
+api/config.js/
+api/.env

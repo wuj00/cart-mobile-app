@@ -1,5 +1,37 @@
 <ion-view view-title="Post">
-  <ion-content class="padding">
+<ion-content class="padding">
     <h2>{{pc.title}}</h2>
+    <form ng-submit="pc.createProduct()">
+    <div class="list">
+    <label class="item item-input item-floating-label">
+      <span class="input-label">Product Name</span>
+      <input ng-model="pc.newProduct.name" type="text" placeholder="Product Name">
+    </label>
+    <label class="item item-input item-floating-label">
+      <span class="input-label">Price</span>
+      <input ng-model="pc.newProduct.price" type="text" placeholder="Price">
+    </label>
+    <label class="item item-input item-floating-label">
+      <span class="input-label">Description</span>
+      <input ng-model="pc.newProduct.description" type="text" placeholder="Description">
+    </label>
+    <label class="item item-input item-floating-label">
+      <span class="input-label">Quantity</span>
+      <input ng-model="pc.newProduct.quantity" type="number" placeholder="Quantity">
+    </label>
+    <button type="button" class="button button-balanced" ng-click="pc.takePhoto()">Take Photos</button>
+    <br>
+    <button class="button button-stable" type="submit">Add new product</button>
+  </div>
+  </form>
+    <!-- <img ng-src="{{self.}}"> -->
+    <div>
+      {{pc.resultFromPost}}
+    </div>
   </ion-content>
+<ion-nav-bar class="bar-stable">
+  <ion-nav-back-button>
+
+</ion-nav-back-button>
+</ion-nav-bar>
 </ion-view>

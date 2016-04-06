@@ -8,6 +8,7 @@ angular.module('starter.services', [])
 .factory('reviewService', reviewService)
 
 function userService($http){
+  var apiUrl = 'http://localhost:8100/users/'
   var service = {
     index: index,
     show: show,
@@ -17,23 +18,25 @@ function userService($http){
   }
   return service
 
+
   function index(){
-    return $http.get('/users')
+    return $http.get(apiUrl)
   }
   function show(id){
-    return $http.get('/users/' + id)
+    return $http.get(apiUrl + id)
   }
   function create(data){
-    return $http.post('/users', data)
+    return $http.post(apiUrl, data)
   }
   function update(id, data){
-    return $http.patch('/users/' + id, data)
+    return $http.patch(apiUrl + id, data)
   }
   function destroy(id){
-    return $http.delete('/users/' + id)
+    return $http.delete(apiUrl + id)
   }
 }
 function relationService($http){
+  var apiUrl = 'http://localhost:8100/relations/'
   var service = {
     create: create,
     delete: destroy
@@ -41,14 +44,15 @@ function relationService($http){
   return service
 
   function create(data){
-    return $http.post('/relations', data)
+    return $http.post(apiUrl, data)
   }
   function destroy(id){
-    return $http.delete('/relations/' + id)
+    return $http.delete(apiUrl + id)
   }
 }
 
 function productService($http){
+  var apiUrl = 'http://localhost:8100/products/'
   var service = {
     index: index,
     show: show,
@@ -59,23 +63,24 @@ function productService($http){
   return service
 
   function index(){
-    return $http.get('/products')
+    return $http.get(apiUrl)
   }
   function show(id){
-    return $http.get('/products/' + id)
+    return $http.get(apiUrl + id)
   }
   function create(data){
-    return $http.post('/products', data)
+    return $http.post(apiUrl, data)
   }
   function update(id, data) {
-    return $http.patch('/users/' + id, data)
+    return $http.patch(apiUrl + id, data)
   }
   function destroy(id){
-    return $http.delete('/users/' + id)
+    return $http.delete(apiUrl + id)
   }
 }
 
 function likeService($http){
+  var apiUrl = 'http://localhost:8100/likes/'
   var service = {
     create: create,
     delete: destroy
@@ -83,14 +88,15 @@ function likeService($http){
   return service
 
   function create(data){
-    return $http.post('/likes/', data)
+    return $http.post(apiUrl, data)
   }
   function destroy(id){
-    return $http.delete('/likes/' + id)
+    return $http.delete(apiUrl + id)
   }
 }
 
 function commentService($http){
+  var apiUrl = 'http://localhost:8100/comments/'
   var service = {
     index: index,
     create: create,
@@ -100,20 +106,21 @@ function commentService($http){
   return service
 
   function index(){
-    return $http.get('/comments')
+    return $http.get(apiUrl)
   }
   function create(data){
-    return $http.post('/comments', data)
+    return $http.post(apiUrl, data)
   }
   function update(id, data){
-    return $http.patch('/comments/' + id, data)
+    return $http.patch(apiUrl + id, data)
   }
   function destroy(id){
-    return $http.delete('/comments/' + id)
+    return $http.delete(apiUrl + id)
   }
 }
 
 function categoryService($http){
+  var apiUrl = 'http://localhost:8100/category/'
   var service = {
     index: index,
     create: create,
@@ -124,33 +131,34 @@ function categoryService($http){
   return service
 
   function index(){
-    return $http.get('/category')
+    return $http.get(apiUrl)
   }
   function show(id){
-    return $http.get('/category/' + id)
+    return $http.get(apiUrl + id)
   }
   function create(data){
-    return $http.post('/category', data)
+    return $http.post(apiUrl, data)
   }
   function update(id, data){
-    return $http.patch('/category/' + id, data)
+    return $http.patch(apiUrl + id, data)
   }
   function destroy(id){
-    return $http.delete('/category/' + id)
+    return $http.delete(apiUrl + id)
   }
 }
 
 function reviewService($http){
+  var apiUrl = 'http://localhost:8100/reviews/'
   var service = {
     create: create,
     delete: destroy
   }
   return service
-  
+
   function create(data){
-    return $http.post('/reviews/', data)
+    return $http.post(apiUrl, data)
   }
   function destroy(id){
-    return $http.delete('/reviews/' + id)
+    return $http.delete(apiUrl + id)
   }
 }
