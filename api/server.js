@@ -56,7 +56,7 @@ app.use('/comments', commentRoutes)
 app.use('/relations', relationRoutes)
 app.use('/reviews', reviewRoutes)
 
-app.listen(port, function(err){
+app.listen(process.env.PORT, function(err){
   if(err) throw err
-  console.log("Listening to port " + port);
+  console.log("Listening to port " + process.env.PORT);
 })
