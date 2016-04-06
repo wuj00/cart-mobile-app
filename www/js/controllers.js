@@ -5,7 +5,7 @@ angular.module('starter.controllers', [])
   .controller('PostCtrl', PostCtrl)
   .controller('NotificationsCtrl', NotificationsCtrl)
   .controller('ProfileCtrl', ProfileCtrl)
-  
+
 MainCtrl.$inject = ["$stateParams"]
 HomeCtrl.$inject = ["$stateParams", "userService", "productService"]
 SearchCtrl.$inject = ["productService", "categoryService", "userService"]
@@ -16,7 +16,7 @@ ProfileCtrl.$inject = ["$stateParams", "userService"]
 // MainCtrl
 function MainCtrl($stateParams){
   var vm = this
-  vm.currentUserId = "570428cbe54eb0a80b4ea317"
+  vm.currentUserId = "57046cecacfc224024212b71"
 }
 
 // News Feed
@@ -89,7 +89,7 @@ function PostCtrl($stateParams, userService, productService, $cordovaCamera, $sc
 
   self.createProduct = function(){
     self.newProduct._creator = $scope.$parent.main.currentUserId
-    self.newProduct.catagory = "57047226bae3c04b25210206"
+    self.newProduct.catagory = "5704722bbae3c04b25210207"
     console.log(self.newProduct, 'this is objs')
     productService.create(self.newProduct).success(function(results){
       console.log(results)
