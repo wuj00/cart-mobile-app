@@ -8,7 +8,7 @@ angular.module('starter.controllers', [])
 
 MainCtrl.$inject = ["$stateParams"]
 HomeCtrl.$inject = ["$stateParams", "userService"]
-SearchCtrl.$inject = ["productService", "categoryService"]
+SearchCtrl.$inject = ["productService", "categoryService", 'userService']
 PostCtrl.$inject = ["$stateParams", "userService", "productService"]
 NotificationsCtrl.$inject = ["$stateParams", "userService"]
 ProfileCtrl.$inject = ["$stateParams", "userService"]
@@ -16,7 +16,7 @@ ProfileCtrl.$inject = ["$stateParams", "userService"]
 // MainCtrl
 function MainCtrl($stateParams){
   var vm = this
-  vm.currentUserId = "5702f9632fe016840c2933fa"
+  vm.currentUserId = "570443322d0580e71b6a53f7"
 }
 
 // News Feed
@@ -33,7 +33,7 @@ function HomeCtrl($stateParams, userService){
 }
 
 // Search Catagory
-function SearchCtrl(productService, categoryService){
+function SearchCtrl(productService, categoryService, userService){
   var self = this
   self.title = "Search Ctrl title"
   productService.index().success(function(results){
@@ -41,6 +41,9 @@ function SearchCtrl(productService, categoryService){
   })
   categoryService.index().success(function(results){
     self.allCatagories = results.catagories
+  })
+  userService.index().success(function(results){
+    self.allUsers = results
   })
 }
 
