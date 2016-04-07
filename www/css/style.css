@@ -189,3 +189,7 @@ ion-tabs.tabs-color-active-positive .tab-item.tab-item-active, ion-tabs.tabs-col
 .tabs-striped.tabs-color-light .tab-item {
     color: #39aea9;
 }
+
+.item-complex .item-content, .item-radio .item-content {
+  padding: 0 0 0 0;
+}

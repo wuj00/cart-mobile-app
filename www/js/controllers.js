@@ -5,6 +5,7 @@ angular.module('starter.controllers', [])
   .controller('PostCtrl', PostCtrl)
   .controller('NotificationsCtrl', NotificationsCtrl)
   .controller('ProfileCtrl', ProfileCtrl)
+  .controller('PhotoViewCtrl', PhotoViewCtrl)
 
 MainCtrl.$inject = ["$stateParams"]
 HomeCtrl.$inject = ["$stateParams", "userService", "productService"]
@@ -17,7 +18,7 @@ ProfileCtrl.$inject = ["$stateParams", "userService"]
 function MainCtrl($stateParams){
   var vm = this
 
-  vm.currentUserId = "570428cbe54eb0a80b4ea317"
+  vm.currentUserId = "570443322d0580e71b6a53f7"
 }
 
 // News Feed
@@ -64,7 +65,7 @@ function SearchCtrl(productService, categoryService, userService){
     self.allProducts = results.products
   })
   categoryService.index().success(function(results){
-    self.allCatagories = results.catagories
+    self.allCatagories = results.categories
   })
   userService.index().success(function(results){
     self.allUsers = results
@@ -114,6 +115,16 @@ function ProfileCtrl($stateParams, userService){
     if (result){
       console.log(result)
       self.user = result
+    }
+  })
+}
+
+function PhotoViewCtrl($stateParams, productService){
+  var self = this
+  productService.show($stateParams.productId).success(function(result){
+    if(result){
+      console.log(result);
+      self.productId = result
     }
   })
 }
