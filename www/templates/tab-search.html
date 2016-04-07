@@ -10,14 +10,21 @@
   </button>
 </div>
 
-    <h1 style="text-align:center;background-color: tomato;">Categories</h1>
-    <div ng-repeat="c in sc.allCatagories">
-      <button class="button button-full button-positive">
-        {{c.name}}
-      </button>
-    </div>
+<div class="container" style="width: 100%; height: 10%; background-color:#39aea9;">
+    <h1 style="text-align:center;  color: white;">
+        Categories
+    </h1>
+</div>
 
-    <h1 style="text-align: center; background-color: lightblue">Explore</h1>
+<div class="container">
+    <div ng-repeat="c in sc.allCatagories">
+        <button class="button button-full button-stable" id="s-btn" >
+            {{c.name}}
+        </button>
+    </div>
+</div>
+
+    <h1 style="text-align:center; background-color:#e5efc1; padding: 10px 0 10px 0; color:grey;">Explore</h1>
     <div>
     Sort By:
     <select ng-model="productOrder">
