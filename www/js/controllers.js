@@ -70,6 +70,7 @@ function MainCtrl($stateParams, $rootScope, $state, auth, user){
     self.isAuthed = function() {
       return auth.isAuthed ? auth.isAuthed() : false
     }
+
 }
 
 function authInterceptor(API, auth) {
@@ -158,7 +159,7 @@ function HomeCtrl($stateParams, userService, productService){
     }
     userService.show(result.following[i]._followed).success(function(result){
       self.peopleArray.push(result)
-      for(var p=0; p < result.products.length; p++) {
+      for(var p=0; p < result.products.length; p++){
       if(result){
         // the person your following
 

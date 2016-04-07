@@ -74,7 +74,9 @@ module.exports = {
     new_product.save(function(err, product){
       if (err) throw err
       console.log('this is in save')
+
       //toS3(product.photos[0], req)
+
       res.json({success: true, message: "successfully created product", product: product})
     })
   },
@@ -82,7 +84,7 @@ module.exports = {
     Product.findOne({_id: req.params.id}).exec(function(err, product){
       if (err) throw err
       product.description = req.body.description
-      product.catagory = req.body.catagory
+      product.category = req.body.category
       product.name = req.body.name
       product.photos = req.body.photos
       product.price = req.body.price

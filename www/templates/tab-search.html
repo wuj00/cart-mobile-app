@@ -10,9 +10,11 @@
   </button>
 </div>
 
-    <h1>All Catagories</h1>
+    <h1 style="text-align:center;">Categories</h1>
     <div ng-repeat="c in sc.allCatagories">
-      <div>{{c.name}}</div>
+      <button class="button button-full button-positive">
+        {{c.name}}
+      </button>
     </div>
 
     <h1>All Products</h1>
@@ -22,13 +24,16 @@
       <option value="name">Name</option>
       <option value="price">Price</option>
     </select>
+
     </div>
     <div>
-      <ul>
+      <ul class="profile">
         <li ng-repeat="p in sc.allProducts | orderBy: productOrder | filter: filterSearch ">
-          {{p.name}} {{p.description}} {{p.price}}
-        </li>
-      </ul>
+            <a href="#"><img style="height: 124px; width: 124px; margin: 0 1px 0 0"src="http://www.fayetteregional.org/DesktopModules/Dynamic%20User%20Directory/NoUserImage.jpg"></a>
+          </li>
+        </ul>
+    </div>
+
     </div>
   </ion-content>
 </ion-view>

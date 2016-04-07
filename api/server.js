@@ -20,10 +20,11 @@ var
   jwt = require('jsonwebtoken')
 
 // console.log(process.env.MLAB_LINK)
-mongoose.connect(process.env.MLAB_LINK, function(err){
+mongoose.connect(config.databaseUrl, function(err){
   if(err) throw err
-  console.log("Connected to mongodb " + process.env.MLAB_LINK)
+  console.log("Connected to mongodb " + config.databaseUrl)
 })
+
 //middleware
 app.use(body_parser.urlencoded({extended: false}))
 app.use(body_parser.json())
@@ -59,8 +60,10 @@ app.use('/comments', commentRoutes)
 app.use('/relations', relationRoutes)
 app.use('/reviews', reviewRoutes)
 
+
 // process.env.PORT
 app.listen(8100, function(err){
   if(err) throw err
   console.log("Listening to port 8100");
+
 })

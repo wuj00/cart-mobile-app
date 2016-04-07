@@ -24,6 +24,12 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
   });
 })
 
+.controller('PostCtrl', function($scope, $ionicSlideBoxDelegate){
+    $scope.navSlide = function(index) {
+        $ionicSlideBoxDelegate.slide(index, 500)
+    }
+})
+
 .config(function($stateProvider, $urlRouterProvider) {
 
   // Ionic uses AngularUI Router which uses the concept of states

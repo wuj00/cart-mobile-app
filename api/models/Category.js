@@ -3,11 +3,11 @@ var
   Schema = mongoose.Schema,
   ObjectId = Schema.Types.ObjectId
 
-var catagory_schema = Schema({
+var category_schema = Schema({
   name: {type: String, required: true},
   products: [{type: ObjectId, ref: "Products"}],
-  sub_catagories: [{type: ObjectId, ref: "Catagory"}]
+  sub_categories: [{type: ObjectId, ref: "Category"}]
 })
 
-var Catagory = mongoose.model('Catagory', catagory_schema)
-module.exports = Catagory
+var Category = mongoose.model('Category', category_schema)
+module.exports = Category
