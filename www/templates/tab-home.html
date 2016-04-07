@@ -1,16 +1,36 @@
 <ion-view view-title="Cart">
-  <ion-content>
+  <ion-content ng-controller="PostCtrl">
     <div ng-repeat="p in hc.productsArray" class="list card">
 
 
-  <div style = "height: 50px " class="item item-avatar">
-    <img style="height: 20px"src="">
+  <div class="item item-avatar">
+    <img style="height: 50px; width: 50px;" src="">
     <h2>{{p._creator.username}}</h2>
+    <p style="font-size: 11px;">April 08, 2016</p>
   </div>
 
-  <div class="item item-body">
-    <img class="full-image" src="">
-    <h4>{{p.name}}</h4>
+
+    <div class="item item-body">
+        <ion-slide-box pager-click="navSlide(index)">
+            <!-- <ion-slide ng-repeat="product in product.photos"> -->
+            <ion-slide>
+                <div class="color-yellow">Color Yellow</div>
+            </ion-slide>
+            <ion-slide>
+                <div class="color-green">Color Green</div>
+            </ion-slide>
+            <ion-slide>
+                <div class="color-teal">Color Teal</div>
+            </ion-slide>
+        </ion-slide-box>
+
+
+       <!-- <img style="width: 100%"    src="http://www.valsurf.com/images/P/la-surf-fitted-dodger-bl-19966-888p.jpg">
+        <img style="width: 100%" src="http://www.valsurf.com/images/D/la-surf-fitted-dodger-bl-19966-399d.jpg">
+        <img style="width: 100%" src="http://www.strictlyfitteds.com/sites/default/files/la-dodgers-opening-day-59fifty-fitted-cap-mlb-new-era_3.jpg"> -->
+
+
+    <h2>{{p.name}}</h2>
     <p>{{p.description}}
     </p>
     <p>
@@ -18,8 +38,20 @@
       <a href="#" class="subdued">5 Comments</a>
     </p>
   </div>
+  <div class="item tabs tabs-secondary tabs-icon-left">
+       <a class="tab-item" href="#">
+           <i class="icon ion-heart"></i> Like
+       </a>
+       <a class="tab-item" href="#">
+           <i class="icon ion-chatbox"></i> Comment
+       </a>
+       <a class="tab-item" href="#">
+           <i class="icon ion-ios-cart"></i> Cart It!
+       </a>
+   </div>
 </div>
-  </ion-content>
+
+</ion-content>
 <ion-nav-bar class="bar-stable">
 <ion-nav-back-button>
 </ion-nav-back-button>

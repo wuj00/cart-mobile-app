@@ -16,6 +16,7 @@ ProfileCtrl.$inject = ["$stateParams", "userService"]
 // MainCtrl
 function MainCtrl($stateParams){
   var vm = this
+
   vm.currentUserId = "570443322d0580e71b6a53f7"
 }
 
