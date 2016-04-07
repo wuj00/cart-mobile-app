@@ -24,6 +24,12 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
   });
 })
 
+.controller('PostCtrl', function($scope, $ionicSlideBoxDelegate){
+    $scope.navSlide = function(index) {
+        $ionicSlideBoxDelegate.slide(index, 500)
+    }
+})
+
 .config(function($stateProvider, $urlRouterProvider) {
 
   // Ionic uses AngularUI Router which uses the concept of states
@@ -88,7 +94,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
       }
     }
   })
-  
+
 
   // if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise('/tab/newsFeed/:user');

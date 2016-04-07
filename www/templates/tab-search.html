@@ -26,7 +26,7 @@
     <div>
       <ul>
         <li ng-repeat="p in sc.allProducts | orderBy: productOrder | filter: filterSearch ">
-          {{p.name}} {{p.description}} {{p.price}}
+          {{p.name}} | {{p.description}} | {{p.price}}
         </li>
       </ul>
     </div>
