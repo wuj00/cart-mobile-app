@@ -20,9 +20,9 @@ var
   jwt = require('jsonwebtoken')
 
 // console.log(process.env.MLAB_LINK)
-mongoose.connect(config.databaseUrl, function(err){
+mongoose.connect(process.env.MLAB_LINK, function(err){
   if(err) throw err
-  console.log("Connected to mongodb " + config.databaseUrl)
+  console.log("Connected to mongodb " + process.env.MLAB_LINK)
 })
 
 //middleware
