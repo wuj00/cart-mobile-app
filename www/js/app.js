@@ -103,6 +103,19 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
       }
     }
   })
+  .state('tab.photo-view', {
+  url: '/photo/:productId',
+  views: {
+    'tab-profile': {
+      templateUrl: 'templates/photo-view.html',
+      controller: 'PhotoViewCtrl'
+    },
+    'tab-home': {
+      templateUrl: 'templates/photo-view.html',
+      controller: 'PhotoViewCtrl'
+    }
+  }
+})
 
 
   // if none of the above states are matched, use this as the fallback

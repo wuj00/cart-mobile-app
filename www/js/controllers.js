@@ -9,6 +9,7 @@ angular.module('starter.controllers', [])
   .controller('PostCtrl', PostCtrl)
   .controller('NotificationsCtrl', NotificationsCtrl)
   .controller('ProfileCtrl', ProfileCtrl)
+  .controller('PhotoViewCtrl', PhotoViewCtrl)
 
 MainCtrl.$inject = ["$stateParams", "$rootScope", "$state", "auth", "user"]
 HomeCtrl.$inject = ["$stateParams", "userService", "productService"]
@@ -70,6 +71,8 @@ function MainCtrl($stateParams, $rootScope, $state, auth, user){
     self.isAuthed = function() {
       return auth.isAuthed ? auth.isAuthed() : false
     }
+
+
 
 }
 
@@ -186,7 +189,7 @@ function SearchCtrl(productService, categoryService, userService){
     self.allProducts = results.products
   })
   categoryService.index().success(function(results){
-    self.allCatagories = results.catagories
+    self.allCatagories = results.categories
   })
   userService.index().success(function(results){
     self.allUsers = results
@@ -266,6 +269,16 @@ function ProfileCtrl($stateParams, userService){
     if (result){
       console.log(result)
       self.user = result
+    }
+  })
+}
+
+function PhotoViewCtrl($stateParams, productService){
+  var self = this
+  productService.show($stateParams.productId).success(function(result){
+    if(result){
+      console.log(result);
+      self.productId = result
     }
   })
 }
