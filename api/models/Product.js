@@ -3,13 +3,13 @@ var
   Schema = mongoose.Schema,
   ObjectId = Schema.Types.ObjectId,
   User = require('./User.js'),
-  Catagory = require('./Catergory.js')
+  Category = require('./Category.js')
 
 var product_schema = Schema({
   name: {type: String, required: true},
   _creator: {type: ObjectId, ref: "User"},
   date_posted: {type: Date, default: Date.now},
-  catagory: {type: ObjectId, ref: "Catagory"},
+  category: {type: ObjectId, ref: "Category"},
   description: String,
   photos: [String],
   likes: [{type: ObjectId, ref: "Like"}],
@@ -27,10 +27,10 @@ product_schema.post('save', function(product){
       user.save()
     }
   })
-  Catagory.findById(product.catagory).exec(function(err, catagory){
-    if (catagory.products.indexOf(product._id) === -1){
-      catagory.products.push(product._id)
-      catagory.save()
+  Category.findById(product.category).exec(function(err, category){
+    if (category.products.indexOf(product._id) === -1){
+      category.products.push(product._id)
+      category.save()
     }
   })
 })
@@ -43,25 +43,25 @@ product_schema.post('remove', function(product){
       user.save()
     }
   })
-  Catagory.findById(product.catagory).exec(function(err, catagory){
-    catagory.products.splice(catagory.products.indexOf(product._id), 1)
-    catagory.save()
+  Category.findById(product.category).exec(function(err, category){
+    category.products.splice(category.products.indexOf(product._id), 1)
+    category.save()
   })
 })
 
-// when changing the catagory of a product
+// when changing the category of a product
 product_schema.pre('save', function(next){
   var productToUpdate = this
-  if (productToUpdate.catagory){
+  if (productToUpdate.category){
     console.log(productToUpdate, '====== product')
-    Catagory.find({}).exec(function(err, catagories){
-      catagories.forEach(function(catagory){
-        console.log(productToUpdate.catagory, 'this is <<<<<<<')
-        catagory.products.forEach(function(product){
-          if ((catagory._id.toString() !== productToUpdate.catagory.toString()) && (productToUpdate._id.toString() === product.toString())) {
-            if (catagory.products.indexOf(product) !== -1){
-              catagory.products.splice(catagory.products.indexOf(product), 1)
-              catagory.save()
+    Category.find({}).exec(function(err, categories){
+      categories.forEach(function(category){
+        console.log(productToUpdate.category, 'this is <<<<<<<')
+        category.products.forEach(function(product){
+          if ((category._id.toString() !== productToUpdate.category.toString()) && (productToUpdate._id.toString() === product.toString())) {
+            if (category.products.indexOf(product) !== -1){
+              category.products.splice(category.products.indexOf(product), 1)
+              category.save()
               console.log('Updated!')
             }
           }
