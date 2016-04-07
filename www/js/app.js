@@ -24,12 +24,6 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
   });
 })
 
-.controller('PostCtrl', function($scope, $ionicSlideBoxDelegate){
-    $scope.navSlide = function(index) {
-        $ionicSlideBoxDelegate.slide(index, 500)
-    }
-})
-
 .config(function($stateProvider, $urlRouterProvider) {
 
   // Ionic uses AngularUI Router which uses the concept of states
@@ -94,18 +88,10 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
       }
     }
   })
-  .state('tab.photo-view', {
+  .state('photo-view', {
   url: '/photo/:productId',
-  views: {
-    'tab-profile': {
-      templateUrl: 'templates/photo-view.html',
-      controller: 'PhotoViewCtrl'
-    },
-    'tab-home': {
-      templateUrl: 'templates/photo-view.html',
-      controller: 'PhotoViewCtrl'
-    }
-  }
+  templateUrl: 'templates/photo-view.html',
+  controller: 'PhotoViewCtrl as pvc'
 })
 
 

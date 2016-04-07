@@ -34,12 +34,12 @@
     <p>{{p.description}}
     </p>
     <p>
-      <a href="#" class="subdued">1 Like</a>
-      <a href="#" class="subdued">5 Comments</a>
+      <a href="#" class="subdued">{{p.likes.length}} Like</a>
+      <a href="#" class="subdued">{{p.comments.length}} Comments</a>
     </p>
   </div>
   <div class="item tabs tabs-secondary tabs-icon-left">
-       <a class="tab-item" href="#">
+       <a ng-click="hc.liked(p._id)" class="tab-item" href="#">
            <i class="icon ion-heart"></i> Like
        </a>
        <a class="tab-item" href="#">

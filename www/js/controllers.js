@@ -8,11 +8,12 @@ angular.module('starter.controllers', [])
   .controller('PhotoViewCtrl', PhotoViewCtrl)
 
 MainCtrl.$inject = ["$stateParams"]
-HomeCtrl.$inject = ["$stateParams", "userService", "productService"]
+HomeCtrl.$inject = ["$stateParams", "userService", "productService", 'likeService']
 SearchCtrl.$inject = ["productService", "categoryService", "userService"]
 PostCtrl.$inject = ["$stateParams", "userService", "productService", "$cordovaCamera", "$scope"]
 NotificationsCtrl.$inject = ["$stateParams", "userService"]
 ProfileCtrl.$inject = ["$stateParams", "userService"]
+PhotoViewCtrl.$inject = ["$stateParams", "productService"]
 
 // MainCtrl
 function MainCtrl($stateParams){
@@ -22,7 +23,7 @@ function MainCtrl($stateParams){
 }
 
 // News Feed
-function HomeCtrl($stateParams, userService, productService){
+function HomeCtrl($stateParams, userService, productService, likeService){
   var self = this
   self.productsArray = []
   self.peopleArray = []
@@ -34,28 +35,33 @@ function HomeCtrl($stateParams, userService, productService){
     if (result){
       // your user
       self.user = result
-      console.log(result.following[i]._followed,  i );
     }
     userService.show(result.following[i]._followed).success(function(result){
       self.peopleArray.push(result)
       for(var p=0; p < result.products.length; p++){
       if(result){
         // the person your following
-
-        console.log(self.peopleArray);
       }
       productService.show(result.products[p]).success(function(result){
         if(result){
-          console.log(result);
           // the person your followings product
           self.productsArray.push(result)
-          console.log(self.productsArray);
         }
       })
     }
     })
   }
 })
+  self.liked = function(product){
+    console.log(product, 'insideeeeeeee');
+    likeService.post(({user:main.currentUserId, _product:product})).success(function(result){
+      console.log(result);
+      if(result){
+        console.log(result);
+      }
+    })
+  }
+
 }
 // Search Catagory
 function SearchCtrl(productService, categoryService, userService){
@@ -108,7 +114,7 @@ function NotificationsCtrl($stateParams, userService){
 }
 
 // user profile
-function ProfileCtrl($stateParams, userService){
+function ProfileCtrl($stateParams, userService, $location){
   var self = this
   self.title = "Profile Ctrl yes"
   userService.show($stateParams.user).success(function(result){
@@ -117,14 +123,17 @@ function ProfileCtrl($stateParams, userService){
       self.user = result
     }
   })
+  function redirecter(id){
+    $location.path("/#/tab/photo/:productId")
+  }
 }
 
 function PhotoViewCtrl($stateParams, productService){
   var self = this
   productService.show($stateParams.productId).success(function(result){
     if(result){
-      console.log(result);
-      self.productId = result
+      console.log(result, "this is from the PhotoViewCtrl");
+      self.product = result
     }
   })
 }
