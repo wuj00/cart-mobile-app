@@ -1,4 +1,12 @@
 <ion-view view-title="Profile">
+  <ion-content>
+    <h1>{{ pc.user.username }}</h1>
+    <h2>{{ pc.user.email }}</h2>
+    <div>Followers: {{ pc.user.followers.length }}</div>
+    <div>Following: {{ pc.user.following.length }} </div>
+    <div>Liked Products: {{ pc.user.liked_products.length }} </div>
+    <a class="button button-assertive" ui-sref="login" ng-click="main.logout()">Logout</a>
+  </ion-content>
 
     <ion-content>
         <div class="p-banner" style="width: 100%; height: 10%;">
@@ -88,6 +96,7 @@
                         </div>
                     </ul>
                 </div>
+
 
 
 

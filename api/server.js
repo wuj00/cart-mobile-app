@@ -16,7 +16,8 @@ var
   relationRoutes = require('./routes/relations.js'),
   reviewRoutes = require('./routes/reviews.js'),
   cors = require('cors'),
-  dotenv = require('dotenv').load({silent: true})
+  dotenv = require('dotenv').load({silent: true}),
+  jwt = require('jsonwebtoken')
 
 // console.log(process.env.MLAB_LINK)
 mongoose.connect(config.databaseUrl, function(err){
@@ -44,6 +45,8 @@ app.use(function (req, res, next) {
       return next();
     }
   })
+//console.log(process.env.secret)
+app.set('superSecret', process.env.secret)
 
 app.get('/', function(req, res){
   res.sendFile(path.join(__dirname, '../www/index.html'))
@@ -57,7 +60,10 @@ app.use('/comments', commentRoutes)
 app.use('/relations', relationRoutes)
 app.use('/reviews', reviewRoutes)
 
+
+// process.env.PORT
 app.listen(8100, function(err){
   if(err) throw err
-  console.log("Listening to port " + port);
+  console.log("Listening to port 8100");
+
 })

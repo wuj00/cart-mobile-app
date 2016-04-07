@@ -1,5 +1,9 @@
 angular.module('starter.controllers', [])
   .controller('MainCtrl', MainCtrl)
+  .factory('authInterceptor', authInterceptor)
+  .service('user', userService)
+  .service('auth', authService)
+  .constant('API', 'https://stark-wave-90063.herokuapp.com/users')
   .controller('HomeCtrl', HomeCtrl)
   .controller('SearchCtrl', SearchCtrl)
   .controller('PostCtrl', PostCtrl)
@@ -7,19 +11,139 @@ angular.module('starter.controllers', [])
   .controller('ProfileCtrl', ProfileCtrl)
   .controller('PhotoViewCtrl', PhotoViewCtrl)
 
-MainCtrl.$inject = ["$stateParams"]
+MainCtrl.$inject = ["$stateParams", "$rootScope", "$state", "auth", "user"]
 HomeCtrl.$inject = ["$stateParams", "userService", "productService"]
 SearchCtrl.$inject = ["productService", "categoryService", "userService"]
-PostCtrl.$inject = ["$stateParams", "userService", "productService", "$cordovaCamera", "$scope"]
+PostCtrl.$inject = ["$stateParams", "userService", "productService", "$cordovaCamera", "$scope", "$cordovaFileTransfer", "$cordovaFile"]
 NotificationsCtrl.$inject = ["$stateParams", "userService"]
 ProfileCtrl.$inject = ["$stateParams", "userService"]
 
 // MainCtrl
-function MainCtrl($stateParams){
-  var vm = this
+function MainCtrl($stateParams, $rootScope, $state, auth, user){
+  var self = this
+  console.log(self)
+  self.currentUserId = "57046cecacfc224024212b71"
+  self.newUser = {}
+  self.loginUser = {}
+  // body tag
+  $rootScope.$on('$stateChangeStart', function(event, toState){
+    //console.log(toState)
+    //console.log(self.isAuthed())
+    if (toState.name === "tab.profile-user" && !self.isAuthed()){
+      //console.log(self)
+      event.preventDefault()
+      console.log('log in successfull')
+      $state.go('login')
+    }
+    // if ((toState.name === "tab.search" || toState.name === "tab.newsFeed-user" || toState.name === "tab.post-user" || toState.name === "tab.notifications-user" || toState.name === "tab.profile-user") && !self.isAuthed()){
+    //   event.preventDefault()
+    //   $state.go("login")
+    // }
+  })
 
-  vm.currentUserId = "570443322d0580e71b6a53f7"
+  function handleRequest(res) {
+      var token = res.data ? res.data.token : null;
+      if (token) {
+        console.log('JWT:', token);
+        auth.saveToken(token)
+        self.currentUserId = res.data.user._id
+        console.log('id>>>', self.currentUserId)
+        $state.go('tab.profile-user', {user: self.currentUserId})
+       }
+      // self.message = res.data.message;
+    }
+    self.login = function() {
+      console.log('got to main login func')
+      user.login(self.loginUser.username, self.loginUser.password)
+        .then(handleRequest, handleRequest)
+    }
+    self.register = function() {
+      user.register(self.newUser.username, self.newUser.password, self.newUser.email)
+        .then(handleRequest, handleRequest)
+    }
+    self.getQuote = function() {
+      user.getQuote()
+        .then(handleRequest, handleRequest)
+    }
+    self.logout = function() {
+      auth.logout && auth.logout()
+    }
+    self.isAuthed = function() {
+      return auth.isAuthed ? auth.isAuthed() : false
+    }
+
+
+
 }
+
+function authInterceptor(API, auth) {
+    return {
+      request: function(config) {
+        var token = auth.getToken();
+        if (token) {
+          config.headers['x-access-token'] = token;
+          //console.log(config.headers)
+        }
+        //console.log(config)
+        return config;
+      },
+      response: function(res){
+         if(res.data.token){auth.saveToken(res.data.token)};
+         return res;
+       },
+    }
+  }
+
+  function authService($window) {
+    var self = this
+    self.parseJwt = function(token) {
+      var base64Url = token.split('.')[1]
+      var base64 = base64Url.replace('-', '+').replace('_', '/')
+      return JSON.parse($window.atob(base64))
+    }
+    // save the token
+    self.saveToken = function(token) {
+      $window.localStorage['jwtToken'] = token;
+    }
+    // get token
+    self.getToken = function() {
+      return $window.localStorage['jwtToken'];
+    }
+    // checking the token to see if user is authenticated
+    self.isAuthed = function() {
+      var token = self.getToken();
+      if(token) {
+        var params = self.parseJwt(token);
+        return Math.round(new Date().getTime() / 1000) <= params.exp;
+      } else {
+        return false;
+      }
+    }
+    // removes token from local storage
+    self.logout = function() {
+      $window.localStorage.removeItem('jwtToken');
+    }
+  }
+  function userService($http, API, auth) {
+    var self = this;
+    self.getQuote = function() {
+      return $http.get(API + '/api/auth/quote')
+    }
+
+    self.login = function(username, password) {
+      return $http.post(API + '/authenticate', {
+          username: username,
+          password: password
+        })
+    }
+    self.register = function(username, password, email){
+      return $http.post(API, {
+        username: username,
+        password: password,
+        email: email
+      })
+    }
+  }
 
 // News Feed
 function HomeCtrl($stateParams, userService, productService){
@@ -73,17 +197,47 @@ function SearchCtrl(productService, categoryService, userService){
 }
 
 // Post a new product
-function PostCtrl($stateParams, userService, productService, $cordovaCamera, $scope){
+function PostCtrl($stateParams, userService, productService, $cordovaCamera, $scope, $cordovaFileTransfer, $cordovaFile){
+  // $scope.testFileUpload = function () {
+  //    // Destination URL
+  //    var url = "http://localhost:8100/users";
+  //
+  //    //File for Upload
+  //    console.log($cordovaFile)
+  //    var targetPath = "http://www.top13.net/wp-content/uploads/2014/11/32-small-flowers.jpg";
+  //
+  //    // File name only
+  //    var filename = targetPath.split("/").pop();
+  //
+  //    var options = {
+  //         fileKey: "file",
+  //         fileName: filename,
+  //         chunkedMode: false,
+  //         mimeType: "image/jpg",
+  //         params : {'directory':'upload', 'fileName':filename}
+  //     };
+  //
+  //     $cordovaFileTransfer.upload(url, targetPath, options).then(function (result) {
+  //         console.log("SUCCESS: " + JSON.stringify(result.response));
+  //     }, function (err) {
+  //         console.log("ERROR: " + JSON.stringify(err));
+  //     }, function (progress) {
+  //         console.log(progress)
+  //     });
+  // }
   // console.log($scope.$parent.main)
   var self = this
   self.title = "Post Ctrl yeah"
   self.takePhoto = function(){
+    // $scope.testFileUpload()
     var newProduct = {}
     var picOptions = {
       targetWidth: 300,
       targetHeight: 300
     }
     //file:///var/mobile/Containers/Data/Application/A9F17893-BBFE-41AC-9BF1-0F8F9EAC9D00/tmp/cdv_photo_014.jpg
+    //"http://www.top13.net/wp-content/uploads/2014/11/32-small-flowers.jpg"
+    //console.log($cordovaFileTransfer)
     $cordovaCamera.getPicture(picOptions).then(function(data){
       self.newProduct.photos = [data]
     })
