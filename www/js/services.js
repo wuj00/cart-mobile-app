@@ -20,7 +20,6 @@ function userService($http){
   }
   return service
 
-
   function index(){
     return $http.get(apiUrl)
   }

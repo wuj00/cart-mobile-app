@@ -1,11 +1,37 @@
 <ion-view view-title="Profile">
   <ion-content>
-    <h1>{{ pc.user.username }}</h1>
-    <h2>{{ pc.user.email }}</h2>
-    <div>Followers: {{ pc.user.followers.length }}</div>
-    <div>Following: {{ pc.user.following.length }} </div>
-    <div>Liked Products: {{ pc.user.liked_products.length }} </div>
-  </ion-content>
+<div class="user-profile" style="width:100%;height:250px;background-color:#fff;float:left;padding:10px 10px 10px 10px;">
+    <img src="">
+    <div class="avatar">
+      <img src="http://www.sourcecoi.com/sites/default/files/team/defaultpic.png" class="" style="height: 75px; border-radius: 50%">
+      <p style="text-align: center;width:80px; position: absolute;right: 95px;top: 10px">{{pc.user.followers.length}} <br> followers</p>
+      <p style="text-align: center;width:80px; position: absolute;right: 10px;top: 10px">{{pc.user.following.length}} <br> following</p>
+      <p style="text-align: center;width:80px; position: absolute;right: 180px;top: 10px">{{pc.user.products.length}} <br> products</p>
+      <button style="position: absolute; right: 55px; top: 55px;padding:0 60px 0 60px; background: lightgrey" type="button" name="button">Edit Profile</button>
+      <ul>
+        <li>
+          <p class="text-black" style="">{{pc.user.name}}</p>
+        </li>
+      </ul>
+      <p>{{pc.user.description}}</p>
+      <button style="padding: 0 125px 5px 0; position: absolute; left: 0; top: 225px;"type="button">all</button>
+      <button style="padding: 0 125px 1px 0; position: absolute; left: 125px; top: 225px;border-left: 2px solid black;"type="button">made</button>
+      <button style="padding: 0 125px 1px 0; position: absolute; left: 250px; top: 225px;border-left: 2px solid black;"type="button">bought</button>
+    </div>
+  </div>
+  <ul class="profile">
+    <div ng-repeat="p in pc.user.products">
+    <li class="">
+      <a href="#"><img style="height: 124px; width: 124px; margin: 0 1px 0 0"src="http://www.fayetteregional.org/DesktopModules/Dynamic%20User%20Directory/NoUserImage.jpg"></a>
+    </li>
+    </div>
+
+</ul>
+
+
+
+</ion-content>
+
 <ion-nav-bar class="bar-stable">
   <ion-nav-back-button>
 
