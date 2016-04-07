@@ -10,7 +10,10 @@ angular.module('starter.services', [])
 function userService($http){
   // https://stark-wave-90063.herokuapp.com
   // https://git.heroku.com/stark-wave-90063.git
-  var apiUrl = '/users/'
+
+  // https://stark-wave-90063.herokuapp.com/
+  var apiUrl = 'https://stark-wave-90063.herokuapp.com/users/'
+
   var service = {
     index: index,
     show: show,
@@ -37,7 +40,8 @@ function userService($http){
   }
 }
 function relationService($http){
-  var apiUrl = '/relations/'
+
+  var apiUrl = 'https://stark-wave-90063.herokuapp.com/relations/'
   var service = {
     create: create,
     delete: destroy
@@ -53,7 +57,9 @@ function relationService($http){
 }
 
 function productService($http){
-  var apiUrl = '/products/'
+
+  var apiUrl = 'https://stark-wave-90063.herokuapp.com/products/'
+
   var service = {
     index: index,
     show: show,
@@ -81,7 +87,8 @@ function productService($http){
 }
 
 function likeService($http){
-  var apiUrl = '/likes/'
+
+  var apiUrl = 'https://stark-wave-90063.herokuapp.com/likes/'
   var service = {
     create: create,
     delete: destroy
@@ -97,7 +104,9 @@ function likeService($http){
 }
 
 function commentService($http){
-  var apiUrl = '/comments/'
+
+  var apiUrl = 'https://stark-wave-90063.herokuapp.com/comments/'
+
   var service = {
     index: index,
     create: create,
@@ -121,7 +130,9 @@ function commentService($http){
 }
 
 function categoryService($http){
-  var apiUrl = '/category/'
+
+  var apiUrl = 'https://stark-wave-90063.herokuapp.com/category/'
+
   var service = {
     index: index,
     create: create,
@@ -149,7 +160,9 @@ function categoryService($http){
 }
 
 function reviewService($http){
-  var apiUrl = '/reviews/'
+
+  var apiUrl = 'https://stark-wave-90063.herokuapp.com/reviews/'
+
   var service = {
     create: create,
     delete: destroy

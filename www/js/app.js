@@ -24,6 +24,13 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
   });
 })
 
+
+// .controller('PostCtrl', function($scope, $ionicSlideBoxDelegate){
+//     $scope.navSlide = function(index) {
+//         $ionicSlideBoxDelegate.slide(index, 500)
+//     }
+// })
+
 .config(function($stateProvider, $urlRouterProvider) {
 
   // Ionic uses AngularUI Router which uses the concept of states
@@ -32,10 +39,19 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
   // Each state's controller can be found in controllers.js
   $stateProvider
 
+  .state('login', {
+    url: '/login',
+    templateUrl: 'templates/login-detail.html'
+  })
+
+  .state('register', {
+    url: '/new',
+    templateUrl: 'templates/signup-detail.html'
+  })
+
   // setup an abstract state for the tabs directive
     .state('tab', {
     url: '/tab',
-    abstract: true,
     templateUrl: 'templates/tabs.html'
   })
 
@@ -96,6 +112,6 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
 
 
   // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/tab/newsFeed/:user');
+  $urlRouterProvider.otherwise('/login');
 
 });

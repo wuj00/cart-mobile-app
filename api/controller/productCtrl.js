@@ -74,7 +74,9 @@ module.exports = {
     new_product.save(function(err, product){
       if (err) throw err
       console.log('this is in save')
-    //   toS3(product.photos[0], req)
+
+      //toS3(product.photos[0], req)
+
       res.json({success: true, message: "successfully created product", product: product})
     })
   },
