@@ -1,14 +1,14 @@
 var
   express = require('express'),
-  catagory_router = express.Router(),
-  catagory_ctrl = require('../controller/catergoryCtrl.js')
+  category_router = express.Router(),
+  category_ctrl = require('../controller/categoryCtrl.js')
 
-catagory_router.route('/')
-  .get(catagory_ctrl.index)
-  .post(catagory_ctrl.create_catagory)
-catagory_router.route('/:id')
-  .get(catagory_ctrl.one_catagory)
-  .patch(catagory_ctrl.edit_catagory)
-  .delete(catagory_ctrl.delete_catagory)
+category_router.route('/')
+  .get(category_ctrl.index)
+  .post(category_ctrl.create_category)
+category_router.route('/:id')
+  .get(category_ctrl.one_category)
+  .patch(category_ctrl.edit_category)
+  .delete(category_ctrl.delete_category)
 
-module.exports = catagory_router
+module.exports = category_router

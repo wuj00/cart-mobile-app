@@ -17,7 +17,7 @@ ProfileCtrl.$inject = ["$stateParams", "userService"]
 function MainCtrl($stateParams){
   var vm = this
 
-  vm.currentUserId = "570443322d0580e71b6a53f7"
+  vm.currentUserId = "570428cbe54eb0a80b4ea317"
 }
 
 // News Feed
@@ -37,7 +37,7 @@ function HomeCtrl($stateParams, userService, productService){
     }
     userService.show(result.following[i]._followed).success(function(result){
       self.peopleArray.push(result)
-      for(var p=0; p < result.products.length; p++) {
+      for(var p=0; p < result.products.length; p++){
       if(result){
         // the person your following
 
