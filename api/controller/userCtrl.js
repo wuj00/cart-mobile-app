@@ -45,7 +45,7 @@ module.exports = {
     new_user.password = new_user.generateHash(req.body.password)
     new_user.save(function(err, user){
       if (err) throw err
-      var token = jwt.sign(user, process.env.secret, {
+      var token = jwt.sign(user.toObject(), process.env.secret.toString(), {
         expiresIn: 6000
       })
       res.json({message: 'user created and here is token', user: user, token: token})
@@ -57,7 +57,7 @@ module.exports = {
       if (!user) return res.json({success: false, message: "No user found with that username"})
       console.log(!user.validPassword(req.body.password))
       if (user && !user.validPassword(req.body.password)) return res.json({success: false, message: "wrong password"})
-      var token = jwt.sign(user.toObject(), process.env.secret, {
+      var token = jwt.sign(user.toObject(), process.env.secret.toString(), {
         expiresIn: 6000
       })
       console.log("here is your token: " + token)
