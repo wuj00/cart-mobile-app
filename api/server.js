@@ -21,7 +21,9 @@ var
 // console.log(process.env.MLAB_LINK)
 mongoose.connect(config.databaseUrl, function(err){
   if(err) throw err
-  console.log("Connected to mongodb " + config.databaseUrl)})
+
+  console.log("Connected to mongodb " + process.env.MLAB_LINK)
+
 //middleware
 app.use(body_parser.urlencoded({extended: false}))
 app.use(body_parser.json())
@@ -55,7 +57,7 @@ app.use('/comments', commentRoutes)
 app.use('/relations', relationRoutes)
 app.use('/reviews', reviewRoutes)
 
-app.listen(port, function(err){
+app.listen(process.env.PORT, function(err){
   if(err) throw err
-  console.log("Listening to port " + port);
+  console.log("Listening to port " + process.env.PORT);
 })

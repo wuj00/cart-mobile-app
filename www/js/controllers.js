@@ -81,7 +81,7 @@ function PostCtrl($stateParams, userService, productService, $cordovaCamera, $sc
       targetWidth: 300,
       targetHeight: 300
     }
-
+    //file:///var/mobile/Containers/Data/Application/A9F17893-BBFE-41AC-9BF1-0F8F9EAC9D00/tmp/cdv_photo_014.jpg
     $cordovaCamera.getPicture(picOptions).then(function(data){
       self.newProduct.photos = [data]
     })
@@ -89,7 +89,7 @@ function PostCtrl($stateParams, userService, productService, $cordovaCamera, $sc
 
   self.createProduct = function(){
     self.newProduct._creator = $scope.$parent.main.currentUserId
-    self.newProduct.catagory = "57047226bae3c04b25210206"
+    self.newProduct.catagory = "5704722bbae3c04b25210207"
     console.log(self.newProduct, 'this is objs')
     productService.create(self.newProduct).success(function(results){
       console.log(results)
