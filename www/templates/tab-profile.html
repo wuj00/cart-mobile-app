@@ -1,31 +1,93 @@
 <ion-view view-title="Profile">
-  <ion-content>
-<div class="user-profile" style="width:100%;height:250px;background-color:#fff;float:left;padding:10px 10px 10px 10px;">
-    <img src="">
-    <div class="avatar">
-      <img src="http://www.sourcecoi.com/sites/default/files/team/defaultpic.png" class="" style="height: 75px; border-radius: 50%">
-      <p style="text-align: center;width:80px; position: absolute;right: 95px;top: 10px">{{pc.user.followers.length}} <br> followers</p>
-      <p style="text-align: center;width:80px; position: absolute;right: 10px;top: 10px">{{pc.user.following.length}} <br> following</p>
-      <p style="text-align: center;width:80px; position: absolute;right: 180px;top: 10px">{{pc.user.products.length}} <br> products</p>
-      <button style="position: absolute; right: 55px; top: 55px;padding:0 60px 0 60px; background: lightgrey" type="button" name="button">Edit Profile</button>
-      <ul>
-        <li>
-          <p class="text-black" style="">{{pc.user.name}}</p>
-        </li>
-      </ul>
-      <p>{{pc.user.description}}</p>
-      <button style="padding: 0 125px 5px 0; position: absolute; left: 0; top: 225px;"type="button">all</button>
-      <button style="padding: 0 125px 1px 0; position: absolute; left: 125px; top: 225px;border-left: 2px solid black;"type="button">made</button>
-      <button style="padding: 0 125px 1px 0; position: absolute; left: 250px; top: 225px;border-left: 2px solid black;"type="button">bought</button>
-    </div>
-  </div>
-  <ul class="profile">
-    <div ng-repeat="p in pc.user.products">
-    <li class="">
-      <a href="#"><img style="height: 124px; width: 124px; margin: 0 1px 0 0"src="http://www.fayetteregional.org/DesktopModules/Dynamic%20User%20Directory/NoUserImage.jpg"></a>
-    </li>
-    </div>
-</ul>
+
+    <ion-content>
+        <div class="p-banner" style="width: 100%; height: 10%;">
+            <!-- <img src="http://entertainmentmesh.com/wp-content/uploads/2015/10/cool-cat-fb-cover.png" style="width: 100%;"/> -->
+            <img src="https://s-media-cache-ak0.pinimg.com/736x/da/e6/02/dae6026c8855b24d6f367c0643c5d051.jpg" style="width: 100%; margin-top: -35px;"/>
+            <!-- <img src="http://data.whicdn.com/images/55270221/original.jpg" style="width: 100%; margin-top: -35px;"/> -->
+
+
+        </div>
+
+        <div class="container" style="height:45%; background-color:#fff; padding:15px; position: relative;">
+            <div class="avatar">
+                <img src="http://www.sourcecoi.com/sites/default/files/team/defaultpic.png" class="" style="height: 75px; border-radius: 50%"/>
+                <br>
+                {{pc.user.username}}
+            </div>
+
+            <div class="div-stats">
+                <p class="p-stats">{{pc.user.products.length}}
+                  <br> Products
+                </p>
+                <p class="p-stats">{{pc.user.followers.length}}
+                  <br> Followers
+                </p>
+                <p class="p-stats">{{pc.user.following.length}}
+                  <br> Following
+                </p>
+            </div>
+
+            <button class="button button-light" id="p-btn" style="position: absolute; right: 37px; top: 75px; padding: 0px 60px 0px 60px; background: grey; color: white;">
+                Edit Profile
+            </button>
+
+            <div class="store-descr">
+                <h6>Details:</h6>
+                <p style="font-size: 11px; color: grey; margin-left: 8px;">{{pc.user.description}}</p>
+            </div>
+        </div>
+
+            <div class="tab-items">
+                <div class="tabs-striped tabs-top tabs-icon-top tabs-color-light">
+                    <div class="tabs" id="p-tabs" style="height: 47px;">
+                        <a class="tab-item" href="#">
+                            <i class="icon ion-grid"></i>
+                            All
+                        </a>
+                        <a class="tab-item" href="#">
+                            <i class="icon ion-pricetag"></i>
+                            Own
+                        </a>
+                        <a class="tab-item" href="#">
+                            <i class="icon ion-bag"></i>
+                            Purchased
+                        </a>
+                    </div>
+                </div>
+            </div>
+                  <!-- <button style="padding: 0 125px 5px 0; position: absolute; left: 0; top: 225px;"type="button">all</button>
+                  <button style="padding: 0 125px 1px 0; position: absolute; left: 125px; top: 225px;border-left: 2px solid black;"type="button">made</button>
+                  <button style="padding: 0 125px 1px 0; position: absolute; left: 250px; top: 225px;border-left: 2px solid black;"type="button">bought</button> -->
+                <div class="p-photos">
+                    <ul class="ul-profile">
+                        <!-- <div ng-repeat="p in pc.user.products"> -->
+                            <li class="">
+                                <a href="#"><img style="height: 123px; width: 123px; margin: 0 1px 0 1px;" src="http://4.bp.blogspot.com/-M_UXW4lB4kU/U8PUp2uyK-I/AAAAAAAAAb8/LlOZ0dPih1c/s1600/ALbzZpb.png"></a>
+                            </li>
+                            <li class="">
+                                <a href="#"><img style="height: 123px; width: 123px; margin: 0 1px 0 1px;" src="http://4.bp.blogspot.com/-LRNR7gmdXa8/U8PUpezCIfI/AAAAAAAAAbw/yhbkzOFFB68/s1600/0wsXmCD.png"></a>
+                            </li>
+                            <li class="">
+                                <a href="#"><img style="height: 123px; width: 123px; margin: 0 1px 0 1px;" src="http://3.bp.blogspot.com/-iJXYwpnPvLE/U8PUuaSyNiI/AAAAAAAAAco/PfVMe5QfaLg/s1600/miku_square_face__by_scgm-d5zy1ch.png"></a>
+                            </li>
+                            <li class="">
+                                <a href="#"><img style="height: 123px; width: 123px; margin: 0 1px 0 1px;" src="http://1.bp.blogspot.com/-F6KUCpe1kiE/U8PUyI4jtzI/AAAAAAAAAc8/jzDrEGOS5xI/s1600/rin_square_face__by_scgm-d60i0hd.png"></a>
+                            </li>
+                            <li class="">
+                                <a href="#"><img style="height: 123px; width: 123px; margin: 0 1px 0 1px;" src="http://4.bp.blogspot.com/-xHewwSF_FAE/U8PU12J54zI/AAAAAAAAAdo/MpRDHhQjeUw/s1600/square_face_rei_ayanami_by_sailorusagichan-d5y61nl.jpg"></a>
+                            </li>
+                            <li class="">
+                                <a href="#"><img style="height: 123px; width: 123px; margin: 0 1px 0 1px;" src="http://1.bp.blogspot.com/-WvRt7elBuMs/U8PUuUuCj-I/AAAAAAAAAck/H-3Q_brxRCw/s1600/kyuubey_square_face_icon_by_artemismiku-d6cpifb.png"></a>
+                            </li>
+                            <li class="">
+                                <a href="#"><img style="height: 123px; width: 123px; margin: 0 1px 0 1px;" src="http://4.bp.blogspot.com/-SNUVWgLzpQw/U8PUp661NaI/AAAAAAAAAb4/EpoertlMtu0/s1600/8556836199_bf95932cf1.jpg"></a>
+                            </li>
+                        </div>
+                    </ul>
+                </div>
+
+>>>>>>> 1a51cd144daa5a376bac6f7b366f969f950ae606
 
 
 
