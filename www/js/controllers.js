@@ -5,7 +5,7 @@ angular.module('starter.controllers', [])
   .controller('PostCtrl', PostCtrl)
   .controller('NotificationsCtrl', NotificationsCtrl)
   .controller('ProfileCtrl', ProfileCtrl)
-  
+
 MainCtrl.$inject = ["$stateParams"]
 HomeCtrl.$inject = ["$stateParams", "userService", "productService"]
 SearchCtrl.$inject = ["productService", "categoryService", "userService"]
@@ -16,7 +16,7 @@ ProfileCtrl.$inject = ["$stateParams", "userService"]
 // MainCtrl
 function MainCtrl($stateParams){
   var vm = this
-  vm.currentUserId = "570428cbe54eb0a80b4ea317"
+  vm.currentUserId = "570443322d0580e71b6a53f7"
 }
 
 // News Feed
