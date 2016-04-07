@@ -61,7 +61,7 @@ module.exports = {
         expiresIn: 6000
       })
       console.log("here is your token: " + token)
-      res.json({success: true, message: "password correct. here is your token!", token: token})
+      res.json({success: true, message: "password correct. here is your token!", token: token, user: user})
     })
   },
   protect: function(req, res, next){

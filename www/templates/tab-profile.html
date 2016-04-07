@@ -5,6 +5,7 @@
     <div>Followers: {{ pc.user.followers.length }}</div>
     <div>Following: {{ pc.user.following.length }} </div>
     <div>Liked Products: {{ pc.user.liked_products.length }} </div>
+    <a class="button button-assertive" ui-sref="login" ng-click="main.logout()">Logout</a>
   </ion-content>
 <ion-nav-bar class="bar-stable">
   <ion-nav-back-button>

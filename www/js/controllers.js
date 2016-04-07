@@ -20,16 +20,18 @@ ProfileCtrl.$inject = ["$stateParams", "userService"]
 // MainCtrl
 function MainCtrl($stateParams, $rootScope, $state, auth, user){
   var self = this
+  console.log(self)
   self.currentUserId = "57046cecacfc224024212b71"
   self.newUser = {}
   self.loginUser = {}
   // body tag
   $rootScope.$on('$stateChangeStart', function(event, toState){
-    console.log(toState)
-    if (toState.name === "tab.profile-user" && self.isAuthed()){
-      console.log(self)
+    //console.log(toState)
+    //console.log(self.isAuthed())
+    if (toState.name === "tab.profile-user" && !self.isAuthed()){
+      //console.log(self)
       event.preventDefault()
-      console.log('not logged in')
+      console.log('log in successfull')
       $state.go('login')
     }
     // if ((toState.name === "tab.search" || toState.name === "tab.newsFeed-user" || toState.name === "tab.post-user" || toState.name === "tab.notifications-user" || toState.name === "tab.profile-user") && !self.isAuthed()){
@@ -43,8 +45,11 @@ function MainCtrl($stateParams, $rootScope, $state, auth, user){
       if (token) {
         console.log('JWT:', token);
         auth.saveToken(token)
+        self.currentUserId = res.data.user._id
+        console.log('id>>>', self.currentUserId)
+        $state.go('tab.profile-user', {user: self.currentUserId})
        }
-      self.message = res.data.message;
+      // self.message = res.data.message;
     }
     self.login = function() {
       console.log('got to main login func')
