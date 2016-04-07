@@ -21,8 +21,9 @@ ProfileCtrl.$inject = ["$stateParams", "userService"]
 // MainCtrl
 function MainCtrl($stateParams, $rootScope, $state, auth, user){
   var self = this
-  console.log(self)
-  self.currentUserId = "57046cecacfc224024212b71"
+  self.title = "Please show up!!!"
+  console.log(self, ',,,')
+  self.currentUserId = ""
   self.newUser = {}
   self.loginUser = {}
   // body tag
@@ -245,7 +246,7 @@ function PostCtrl($stateParams, userService, productService, $cordovaCamera, $sc
 
   self.createProduct = function(){
     self.newProduct._creator = $scope.$parent.main.currentUserId
-    self.newProduct.catagory = "5704722bbae3c04b25210207"
+    self.newProduct.catagory = "57047231bae3c04b25210208"
     console.log(self.newProduct, 'this is objs')
     productService.create(self.newProduct).success(function(results){
       console.log(results)

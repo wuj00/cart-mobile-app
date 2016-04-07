@@ -18,7 +18,8 @@ var
   cors = require('cors'),
   dotenv = require('dotenv').load({silent: true}),
   jwt = require('jsonwebtoken')
-
+  
+// console.log(process.env)
 // console.log(process.env.MLAB_LINK)
 mongoose.connect(process.env.MLAB_LINK, function(err){
   if(err) throw err
@@ -62,8 +63,8 @@ app.use('/reviews', reviewRoutes)
 
 
 // process.env.PORT
-app.listen(process.env.PORT, function(err){
+app.listen(8100, function(err){
   if(err) throw err
-  console.log("Listening to port " + process.env.PORT);
+  console.log("Listening to port " + 8100);
 
 })
