@@ -203,15 +203,20 @@ function SearchCtrl(productService, categoryService, userService, relationServic
   })
   self.followThisUser = function(toFollow){
     userService.show(toFollow).success(function(result){
-      console.log(result, 'hahah')
-      console.log(result.followers, 'dlkfj')
-      // relationService.show(result.followers[1]).success(function(re){
-      //   console.log(re)
-      // })
-    })
-
-    relationService.create({_follower: $window.localStorage.getItem('cID'), _followed: toFollow}).success(function(results){
-      console.log(results)
+      result.followers.forEach(function(el, i){
+        if (el._follower === $window.localStorage.getItem('cID')) {
+          relationService.destroy(el._id).success(function(t){
+            console.log(el._id, 'this is id of relation')
+            console.log(t, '<<<<< destroyed!!!')
+            self.followP = true
+          })
+        } else if (i == result.followers.length - 1) {
+          relationService.create({_follower: $window.localStorage.getItem('cID'), _followed: toFollow}).success(function(results){
+            console.log(results, "added like")
+            self.followP = false
+          })
+        }
+      })
     })
   }
 }
