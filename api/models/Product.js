@@ -28,10 +28,13 @@ product_schema.post('save', function(product){
     }
   })
   Category.findById(product.category).exec(function(err, category){
-    if (category.products.indexOf(product._id) === -1){
-      category.products.push(product._id)
-      category.save()
+    if (category.products) {
+      if (category.products.indexOf(product._id) === -1){
+        category.products.push(product._id)
+        category.save()
+      }
     }
+
   })
 })
 
