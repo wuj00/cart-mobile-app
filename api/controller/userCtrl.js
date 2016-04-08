@@ -58,7 +58,7 @@ module.exports = {
       console.log(!user.validPassword(req.body.password))
       if (user && !user.validPassword(req.body.password)) return res.json({success: false, message: "wrong password"})
       var token = jwt.sign(user.toObject(), process.env.secret.toString(), {
-        expiresIn: 6000
+        expiresIn: 24000
       })
       console.log("here is your token: " + token)
       res.json({success: true, message: "password correct. here is your token!", token: token, user: user})
