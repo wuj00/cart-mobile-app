@@ -5,7 +5,13 @@
     src: url('../fonts/Diamonds-Regular.ttf') format('truetype');
     font-weight: bold;
     font-style: normal;
-   }
+}
+@font-face {
+   font-family: 'Diamonds-Bold';
+   src: url('../fonts/Diamonds-Bold.ttf') format('truetype');
+   font-weight: normal;
+   font-style: oblique;;
+}
 
 p {
     margin: 0 auto;
@@ -58,6 +64,13 @@ ion-tabs.tabs-color-active-positive .tab-item.tab-item-active, ion-tabs.tabs-col
   background: -o-linear-gradient( #a3d3c7, #39aea9); /* For Opera 11.1 to 12.0 */
   background: -moz-linear-gradient( #a3d3c7, #39aea9); /* For Firefox 3.6 to 15 */
   background: linear-gradient( #a3d3c7, #39aea9); /* Standard syntax (must be last) */
+}
+.bar .title {
+  color: white;
+  font-family: Diamonds;
+  font-weight: bold;
+  font-size: 18px;
+  line-height: 38px;
 }
 .bar.bar-stable .title {
   color: white;
