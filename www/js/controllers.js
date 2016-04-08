@@ -205,9 +205,9 @@ function SearchCtrl(productService, categoryService, userService, relationServic
     userService.show(toFollow).success(function(result){
       console.log(result, 'hahah')
       console.log(result.followers[1], 'dlkfj')
-      relationService.show(result.followers[1]).success(function(re){
-        console.log(re)
-      })
+      // relationService.show(result.followers[1]).success(function(re){
+      //   console.log(re)
+      // })
     })
 
     relationService.create({_follower: $window.localStorage.getItem('cID'), _followed: toFollow}).success(function(results){
