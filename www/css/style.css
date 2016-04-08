@@ -84,9 +84,8 @@ ion-tabs.tabs-color-active-positive .tab-item.tab-item-active, ion-tabs.tabs-col
 }
 .bar .button.button-clear {
   color: white;
-  font-family: Diamonds;
-  /*src: url(./fonts/Diamonds Bold.ttf) format("truetype");*/
-  font-weight: bold;
+  /*font-family: Diamonds;*/
+  /*font-weight: bold;*/
   font-size: 15px;
 }
 .bar {

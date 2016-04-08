@@ -153,7 +153,7 @@ function HomeCtrl($stateParams, userService, productService, likeService, $windo
   // Setup the loader
   $ionicLoading.show({
     animation: 'fade-in',
-    duration: 10000,
+    duration: 2000,
     showBackdrop: true,
     maxWidth: 200,
     showDelay: 0,
@@ -206,6 +206,7 @@ function SearchCtrl(productService, categoryService, userService, relationServic
   // Setup the loader
   $ionicLoading.show({
     animation: 'fade-in',
+    duration: 2000,
     showBackdrop: true,
     maxWidth: 200,
     showDelay: 0,
@@ -314,6 +315,7 @@ function NotificationsCtrl($stateParams, userService, $ionicLoading){
   // Setup the loader
   $ionicLoading.show({
     animation: 'fade-in',
+    duration: 2000,
     showBackdrop: true,
     maxWidth: 200,
     showDelay: 0,
@@ -333,6 +335,7 @@ function ProfileCtrl($stateParams, userService, $scope, $window, $ionicLoading){
   // Setup the loader
   $ionicLoading.show({
     animation: 'fade-in',
+    duration: 2000,
     showBackdrop: true,
     maxWidth: 200,
     showDelay: 0,
@@ -365,6 +368,7 @@ function PhotoViewCtrl($stateParams, productService, $ionicLoading){
   // Setup the loader
   $ionicLoading.show({
     animation: 'fade-in',
+    duration: 2000,
     showBackdrop: true,
     maxWidth: 200,
     showDelay: 0,
