@@ -16,6 +16,12 @@ module.exports = {
         res.json({success: true, message: "Deleted"})
       })
     }))
+  },
+  show: function(req, res){
+    Relation.findOne({_id: req.params.id}).exec(function(err, relation){
+      if (err) throw err
+      res.json(relation)
+    })
   }
 
 }
