@@ -15,7 +15,7 @@ angular.module('starter.controllers', [])
 MainCtrl.$inject = ["$stateParams", "$rootScope", "$state", "auth", "user", "$window"]
 HomeCtrl.$inject = ["$stateParams", "userService", "productService", 'likeService', "$window", "$ionicLoading", "$ionicSlideBoxDelegate"]
 SearchCtrl.$inject = ["productService", "categoryService", "userService", "relationService", "$window", "relationService", "$ionicLoading", "$ionicSlideBoxDelegate"]
-PostCtrl.$inject = ["$stateParams", "userService", "productService", "$cordovaCamera", "$scope", "$cordovaFileTransfer", "$cordovaFile", "$ionicLoading", "$ionicSlideBoxDelegate"]
+PostCtrl.$inject = ["$stateParams", "userService", "productService", "$cordovaCamera", "$scope", "$cordovaFileTransfer", "$cordovaFile", "$ionicLoading", "$ionicSlideBoxDelegate", "$window"]
 NotificationsCtrl.$inject = ["$stateParams", "userService", "$ionicLoading"]
 ProfileCtrl.$inject = ["$stateParams", "userService", "$scope", "$window", "$ionicLoading"]
 PhotoViewCtrl.$inject = ["$stateParams", "productService", "$ionicLoading", "$ionicSlideBoxDelegate"]
@@ -244,7 +244,7 @@ function SearchCtrl(productService, categoryService, userService, relationServic
 }
 
 // Post a new product
-function PostCtrl($stateParams, userService, productService, $cordovaCamera, $scope, $cordovaFileTransfer, $cordovaFile, $ionicSlideBoxDelegate){
+function PostCtrl($stateParams, userService, productService, $cordovaCamera, $scope, $cordovaFileTransfer, $cordovaFile, $ionicSlideBoxDelegate, $window){
   // $scope.testFileUpload = function () {
   //    // Destination URL
   //    var url = "http://localhost:8100/users";
