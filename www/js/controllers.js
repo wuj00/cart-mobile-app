@@ -33,7 +33,10 @@ function MainCtrl($stateParams, $rootScope, $state, auth, user, $window, $ionicL
     if (toState.name === "tab.profile-user" && !self.isAuthed()){
       event.preventDefault()
       $state.go('login')
+    } else {
+      $state.reload(toState.name)
     }
+
     // if ((toState.name === "tab.search" || toState.name === "tab.newsFeed-user" || toState.name === "tab.post-user" || toState.name === "tab.notifications-user" || toState.name === "tab.profile-user") && !self.isAuthed()){
     //   event.preventDefault()
     //   $state.go("login")
