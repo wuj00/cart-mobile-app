@@ -303,7 +303,8 @@ function PostCtrl($stateParams, userService, productService, $cordovaCamera, $sc
     console.log(self.newProduct, 'this is objs')
     productService.create(self.newProduct).success(function(results){
       console.log(results, "look for photo")
-      self.resultFromPost = results
+      self.resultFromPost = results.product.photos[0]
+      
     })
   }
 }
