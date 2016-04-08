@@ -13,15 +13,15 @@ angular.module('starter.controllers', [])
 
 
 MainCtrl.$inject = ["$stateParams", "$rootScope", "$state", "auth", "user", "$window"]
-HomeCtrl.$inject = ["$stateParams", "userService", "productService", 'likeService', "$window"]
-SearchCtrl.$inject = ["productService", "categoryService", "userService", "relationService", "$window", "relationService"]
-PostCtrl.$inject = ["$stateParams", "userService", "productService", "$cordovaCamera", "$scope", "$cordovaFileTransfer", "$cordovaFile"]
-NotificationsCtrl.$inject = ["$stateParams", "userService"]
-ProfileCtrl.$inject = ["$stateParams", "userService", "$scope", "$window"]
-PhotoViewCtrl.$inject = ["$stateParams", "productService"]
+HomeCtrl.$inject = ["$stateParams", "userService", "productService", 'likeService', "$window", "$ionicLoading", "$ionicSlideBoxDelegate"]
+SearchCtrl.$inject = ["productService", "categoryService", "userService", "relationService", "$window", "relationService", "$ionicLoading", "$ionicSlideBoxDelegate"]
+PostCtrl.$inject = ["$stateParams", "userService", "productService", "$cordovaCamera", "$scope", "$cordovaFileTransfer", "$cordovaFile", "$ionicLoading", "$ionicSlideBoxDelegate"]
+NotificationsCtrl.$inject = ["$stateParams", "userService", "$ionicLoading", "$ionicSlideBoxDelegate"]
+ProfileCtrl.$inject = ["$stateParams", "userService", "$scope", "$window", "$ionicLoading", "$ionicSlideBoxDelegate"]
+PhotoViewCtrl.$inject = ["$stateParams", "productService", "$ionicLoading", "$ionicSlideBoxDelegate"]
 
 // MainCtrl
-function MainCtrl($stateParams, $rootScope, $state, auth, user, $window){
+function MainCtrl($stateParams, $rootScope, $state, auth, user, $window, $ionicLoading){
   var self = this
   self.title = "Please show up!!!"
 //  console.log(self, ',,,')
@@ -72,6 +72,7 @@ function MainCtrl($stateParams, $rootScope, $state, auth, user, $window){
       return auth.isAuthed ? auth.isAuthed() : false
     }
 }
+
 
 function authInterceptor(API, auth) {
     return {
@@ -144,10 +145,19 @@ function authInterceptor(API, auth) {
   }
 
 // News Feed
-function HomeCtrl($stateParams, userService, productService, likeService, $window){
+function HomeCtrl($stateParams, userService, productService, likeService, $window, $ionicLoading){
   var self = this
   self.productsArray = []
   self.peopleArray = []
+
+  // Setup the loader
+  $ionicLoading.show({
+    animation: 'fade-in',
+    showBackdrop: true,
+    maxWidth: 200,
+    showDelay: 0,
+    template: '<img src="img/preloader2.svg"/>'
+  });
 
   self.title = "This is the home ctrl title"
   // $stateParams.user = "5702f9632fe016840c2933fa"
@@ -170,6 +180,7 @@ function HomeCtrl($stateParams, userService, productService, likeService, $windo
         if(result){
           // the person your followings product
           self.productsArray.push(result)
+          $ionicLoading.hide()
         }
       })
     }
@@ -188,8 +199,18 @@ function HomeCtrl($stateParams, userService, productService, likeService, $windo
 
 }
 // Search Catagory
-function SearchCtrl(productService, categoryService, userService, relationService, $window, relationService){
+function SearchCtrl(productService, categoryService, userService, relationService, $window, relationService, $ionicLoading){
   var self = this
+
+  // Setup the loader
+  $ionicLoading.show({
+    animation: 'fade-in',
+    showBackdrop: true,
+    maxWidth: 200,
+    showDelay: 0,
+    template: '<img src="img/preloader2.svg"/>'
+  });
+
   self.title = "Search Ctrl title"
   productService.index().success(function(results){
     self.allProducts = results.products
@@ -261,12 +282,13 @@ function PostCtrl($stateParams, userService, productService, $cordovaCamera, $sc
       self.newProduct.photos = [data]
     })
 
-
   }
 
-      $scope.navSlide = function(index) {
-          $ionicSlideBoxDelegate.slide(index, 500)
-      }
+    self.navSlide = function(index) {
+      console.log("slide", index)
+      $ionicSlideBoxDelegate.slide(index, 500)
+    }
+
 
   self.createProduct = function(){
     self.newProduct._creator = $scope.$parent.main.currentUserId
@@ -280,17 +302,37 @@ function PostCtrl($stateParams, userService, productService, $cordovaCamera, $sc
 }
 
 // show updates
-function NotificationsCtrl($stateParams, userService){
+function NotificationsCtrl($stateParams, userService, $ionicLoading){
   var self = this
+
+  // Setup the loader
+  $ionicLoading.show({
+    animation: 'fade-in',
+    showBackdrop: true,
+    maxWidth: 200,
+    showDelay: 0,
+    template: '<img src="img/preloader2.svg"/>'
+  });
+
   self.title = "Notifications Ctrl yup"
 
 }
 
 // user profile
-function ProfileCtrl($stateParams, userService, $scope, $window){
+function ProfileCtrl($stateParams, userService, $scope, $window, $ionicLoading){
   // console.log($scope.$parent.$parent.$parent.$parent.$parent.main.currentUserId)
   console.log($window.localStorage.getItem('cID'))
   var self = this
+
+  // Setup the loader
+  $ionicLoading.show({
+    animation: 'fade-in',
+    showBackdrop: true,
+    maxWidth: 200,
+    showDelay: 0,
+    template: '<img src="img/preloader2.svg"/>'
+  });
+
   self.title = "Profile Ctrl yes"
   userService.show($window.localStorage.getItem('cID')).success(function(result){
     if (result){
@@ -303,8 +345,18 @@ function ProfileCtrl($stateParams, userService, $scope, $window){
   }
 }
 
-function PhotoViewCtrl($stateParams, productService){
+function PhotoViewCtrl($stateParams, productService, $ionicLoading){
   var self = this
+
+  // Setup the loader
+  $ionicLoading.show({
+    animation: 'fade-in',
+    showBackdrop: true,
+    maxWidth: 200,
+    showDelay: 0,
+    template: '<img src="img/preloader2.svg"/>'
+  });
+
   productService.show($stateParams.productId).success(function(result){
     if(result){
       console.log(result, "this is from the PhotoViewCtrl");

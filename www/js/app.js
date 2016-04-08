@@ -10,7 +10,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
 
-    
+
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
     // for form inputs)
     if (window.cordova && window.cordova.plugins && window.cordova.plugins.Keyboard) {
@@ -26,11 +26,6 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
 })
 
 
-// .controller('PostCtrl', function($scope, $ionicSlideBoxDelegate){
-//     $scope.navSlide = function(index) {
-//         $ionicSlideBoxDelegate.slide(index, 500)
-//     }
-// })
 
 .config(function($stateProvider, $urlRouterProvider) {
 
