@@ -1,16 +1,21 @@
-<ion-view view-title="Search">
-  <ion-content>
-    <div class="bar bar-header item-input-inset">
-  <label class="item-input-wrapper">
-    <i class="icon ion-ios-search placeholder-icon"></i>
-    <input class="theme" type="search" ng-model="filterSearch">
-  </label>
-  <button class="button button-clear">
-    Cancel
-  </button>
-</div>
+<ion-view view-title="Search" animation="slide-left-right">
+    <ion-content>
+        <div class="bar bar-header item-input-inset">
+            <label class="item-input-wrapper">
+                <i class="icon ion-ios-search placeholder-icon"></i>
+                <input class="theme" type="search" ng-model="filterSearch">
+            </label>
+          <button class="button button-clear">
+            Cancel
+          </button>
+        </div>
 
-    <h1 style="text-align:center;background-color: tomato;">Categories</h1>
+
+<div class="container" style="width: 100%; height: 10%; background-color:#39aea9;">
+    <h1 style="text-align:center; color: white;">
+        Categories
+    </h1>
+</div>
     <div ng-repeat="c in sc.allCatagories">
       <button class="button button-full button-positive">
         {{c.name}}
@@ -21,23 +26,36 @@
       <li style="text-align: center; font-size: 25px; border: 2px solid black; margin-bottom: 10px;">{{user.username}}<button class="button button-balanced" style="margin-left: 10px;" ng-click="sc.followThisUser(user._id)">Follow</button></li>
     </ul>
 
-    <h1 style="text-align: center; background-color: lightblue">Explore</h1>
+
+        <div class="container">
+            <div ng-repeat="c in sc.allCatagories">
+                <a class="button button-full button-stable icon-right ion-arrow-right-b" id="s-btn" href="#/tab/notifications/">
+                    {{c.name}}
+                </a>
+            </div>
+        </div>
+
+        <h1 style="text-align:center; background-color:#e5efc1; padding: 10px 0 10px 0; color:grey;">Explore</h1>
+
+        <div>
+        Sort By:
+        <select ng-model="productOrder">
+            <option value="name">Name</option>
+            <option value="price">Price</option>
+            <option value="quantity">Quantity</option>
+        </select>
+        </div>
     <div>
-    Sort By:
-    <select ng-model="productOrder">
-      <option value="name">Name</option>
-      <option value="price">Price</option>
-      <option value="quantity">Quantity</option>
-    </select>
-    </div>
-    <div>
-      <ul class="profile">
-        <li ng-repeat="p in sc.allProducts | orderBy: productOrder | filter: filterSearch ">
-            <a href="#"><img style="height: 124px; width: 124px; margin: 0 1px 0 0"src="http://www.fayetteregional.org/DesktopModules/Dynamic%20User%20Directory/NoUserImage.jpg"></a>
-          </li>
+        <ul class="profile">
+            <li ng-repeat="p in sc.allProducts | orderBy: productOrder | filter: filterSearch ">
+                <a href="#"><img style="height: 124px; width: 124px; margin: 0 1px 0 0"src="http://www.fayetteregional.org/DesktopModules/Dynamic%20User%20Directory/NoUserImage.jpg"></a>
+            </li>
         </ul>
     </div>
 
-    </div>
   </ion-content>
+  <!-- <ion-nav-bar class="bar-stable">
+      <ion-nav-back-button>
+      </ion-nav-back-button>
+  </ion-nav-bar> -->
 </ion-view>

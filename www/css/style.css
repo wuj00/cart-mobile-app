@@ -1,20 +1,32 @@
 /* Empty. Add your own CSS if you like */
 
+@font-face {
+    font-family: 'Diamonds';
+    src: url('../fonts/Diamonds-Regular.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+   }
+
 p {
     margin: 0 auto;
 }
-
 h6 {
     margin: 0 auto;
 }
-
+h1 {
+    font-family: Diamonds;
+    font-weight: bold;
+    margin-bottom: 0;
+    margin-top: 0;
+    line-height: 1.5;
+}
 /*---TABS-ICONS------------------------*/
 .tab-nav {
   height: 35px;
   background: rgb(33, 33, 33);
 }
 ion-tabs.tabs-color-active-positive .tab-item {
-  color: rgb(135, 135, 135);
+  color: #878787;
 }
 ion-tabs.tabs-color-active-positive .tab-item.tab-item-active, ion-tabs.tabs-color-active-positive .tab-item.active, ion-tabs.tabs-color-active-positive .tab-item.activated  {
   color: white;
@@ -74,8 +86,12 @@ ion-tabs.tabs-color-active-positive .tab-item.tab-item-active, ion-tabs.tabs-col
 /*--------------------------------------*/
 
 /*---HOME--------------------------------*/
-div.item.item-avatar {
+/*div.item.item-avatar {
     min-height: 55px;
+}*/
+ion-slide img {
+    width: 100%;
+    height: auto;
 }
 .slider {
     height: 100%;
@@ -85,9 +101,10 @@ div.item.item-avatar {
     height: 100%
 }
 div.slider-slides {
-    height: 300px;
+    width: 100%;
+    height: auto;
 }
-.color-yellow {
+/*.color-yellow {
     background-color: #e5efc1;
     width: 100%;
     height: 100%;
@@ -102,7 +119,7 @@ div.slider-slides {
     background-color: #39aea9;
     width: 100%;
     height: 100%;
-}
+}*/
 /*.icon-share {
     background-repeat: no-repeat;
     background-position: 50%;
@@ -113,18 +130,18 @@ div.slider-slides {
 /*--------------------------------------*/
 
 /*---SEARCH-----------------------------*/
-.profile li img {
+.profile img {
     float: left;
     border: 1.5px solid #fff;
-    width: 30%;
-    height: 10%;
+    /*width: 30%;
+    height: 10%;*/
     -webkit-transition: box-shadow 0.5s ease;
     -moz-transition: box-shadow 0.5s ease;
     -o-transition: box-shadow 0.5s ease;
     -ms-transition: box-shadow 0.5s ease;
     transition: box-shadow 0.5s ease;
 }
-.profile li img:hover {
+.profile img:hover {
     -webkit-box-shadow: 0px 0px 7px rgba(255, 255, 255,
     0.9);
     box-shadow: 0px 0px 7px rgba(255, 255, 255, 0.9);
@@ -184,13 +201,35 @@ i.icon.ion-grid, i.icon.ion-pricetag, i.icon.ion-bag {
     margin-top: 25.5%;
 }
 ion-tabs.tabs-color-active-positive .tab-item.tab-item-active, ion-tabs.tabs-color-active-positive .tab-item.active, ion-tabs.tabs-color-active-positive .tab-item.activated  {
-  color: white;
-  background: black;
+    color: white;
+    background: black;
 }
 .tabs-striped.tabs-color-light .tab-item {
     color: #39aea9;
 }
-
+ion-item.item.item-complex {
+    border-color: white;
+}
 .item-complex .item-content, .item-radio .item-content {
-  padding: 0 0 0 0;4
+    padding: 0;
+}
+.button.button-positive {
+    position: absolute;
+    right: 37px;
+    top: 75px;
+    padding: 0px 60px 0px 60px;
+    border-radius: 8px;
+    background: #878787;
+    color: white;
+}
+.button.button-positive.activated {
+    background-color: #cccccc;
+}
+
+/*---SEARCH------------------------------------*/
+.button.button-stable {
+    border-top: solid lightgrey 1px;
+    border-bottom: solid lightgrey 1px;
+    margin: -1px 0 -1px 0;
+
 }

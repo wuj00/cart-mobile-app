@@ -74,6 +74,7 @@ function MainCtrl($stateParams, $rootScope, $state, auth, user, $window){
 
 
 
+  // vm.currentUserId = "570428cbe54eb0a80b4ea317"
 }
 
 function authInterceptor(API, auth) {
