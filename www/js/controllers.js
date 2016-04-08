@@ -33,9 +33,10 @@ function MainCtrl($stateParams, $rootScope, $state, auth, user, $window, $ionicL
     if (toState.name === "tab.profile-user" && !self.isAuthed()){
       event.preventDefault()
       $state.go('login')
-    } else {
-      $state.reload(toState.name)
     }
+    // else {
+    //   $state.reload(toState.name)
+    // }
 
     // if ((toState.name === "tab.search" || toState.name === "tab.newsFeed-user" || toState.name === "tab.post-user" || toState.name === "tab.notifications-user" || toState.name === "tab.profile-user") && !self.isAuthed()){
     //   event.preventDefault()
@@ -308,8 +309,8 @@ function PostCtrl($stateParams, userService, productService, $cordovaCamera, $sc
     productService.create(self.newProduct).success(function(results){
       console.log(results, "look for photo")
       self.resultFromPost = results.product.photos[0]
-      $window.localStorage[self.num] = self.resultFromPost;
-      self.num += 1
+      // $window.localStorage[self.num] = self.resultFromPost;
+      // self.num += 1
     })
   }
 }
