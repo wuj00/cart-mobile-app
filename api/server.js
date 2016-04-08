@@ -63,8 +63,8 @@ app.use('/reviews', reviewRoutes)
 
 
 // process.env.PORT
-app.listen(process.env.PORT, function(err){
+app.listen(8100, function(err){
   if(err) throw err
-  console.log("Listening to port " + process.env.PORT);
+  console.log("Listening to port " + 8100);
 
 })
