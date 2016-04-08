@@ -9,5 +9,6 @@ relationRouter.route('/')
 
 relationRouter.route('/:id')
   .delete(relationCtrl.destroy)
+  .get(relationCtrl.show)
 
 module.exports = relationRouter

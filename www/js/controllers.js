@@ -14,7 +14,7 @@ angular.module('starter.controllers', [])
 
 MainCtrl.$inject = ["$stateParams", "$rootScope", "$state", "auth", "user", "$window"]
 HomeCtrl.$inject = ["$stateParams", "userService", "productService", 'likeService', "$window"]
-SearchCtrl.$inject = ["productService", "categoryService", "userService", "relationService"]
+SearchCtrl.$inject = ["productService", "categoryService", "userService", "relationService", "$window", "relationService"]
 PostCtrl.$inject = ["$stateParams", "userService", "productService", "$cordovaCamera", "$scope", "$cordovaFileTransfer", "$cordovaFile"]
 NotificationsCtrl.$inject = ["$stateParams", "userService"]
 ProfileCtrl.$inject = ["$stateParams", "userService", "$scope", "$window"]
@@ -188,7 +188,7 @@ function HomeCtrl($stateParams, userService, productService, likeService, $windo
 
 }
 // Search Catagory
-function SearchCtrl(productService, categoryService, userService, relationService){
+function SearchCtrl(productService, categoryService, userService, relationService, $window, relationService){
   var self = this
   self.title = "Search Ctrl title"
   productService.index().success(function(results){
@@ -200,8 +200,16 @@ function SearchCtrl(productService, categoryService, userService, relationServic
   userService.index().success(function(results){
     self.allUsers = results
   })
-  self.followThisUser = function(follower, toFollow){
-    relationService.create({_follower: follower, _followed: toFollow}).success(function(results){
+  self.followThisUser = function(toFollow){
+    userService.show(toFollow).success(function(result){
+      console.log(result, 'hahah')
+      console.log(result.followers[1], 'dlkfj')
+      relationService.show(result.followers[1]).success(function(re){
+        console.log(re)
+      })
+    })
+
+    relationService.create({_follower: $window.localStorage.getItem('cID'), _followed: toFollow}).success(function(results){
       console.log(results)
     })
   }
