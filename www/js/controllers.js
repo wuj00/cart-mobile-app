@@ -159,11 +159,13 @@ function HomeCtrl($stateParams, userService, productService, likeService, $windo
     if (result){
       // your user
       self.user = result
+
       console.log(result);
     }
     userService.show(result.following[i]._followed).success(function(result){
       self.peopleArray.push(result)
       console.log(result, "Hey arman");
+
       for(var p=0; p < result.products.length; p++){
       if(result){
         // the person your following
@@ -205,7 +207,7 @@ function SearchCtrl(productService, categoryService, userService, relationServic
   self.followThisUser = function(toFollow){
     userService.show(toFollow).success(function(result){
       console.log(result, 'hahah')
-      console.log(result.followers[1], 'dlkfj')
+      console.log(result.followers, 'dlkfj')
       // relationService.show(result.followers[1]).success(function(re){
       //   console.log(re)
       // })

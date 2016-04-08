@@ -4,7 +4,9 @@ var
 
 module.exports = {
   show: function(req,res){
-    User.findOne({_id: req.params.id}).populate("following").exec(function(err,user){
+
+    User.findOne({_id: req.params.id}).populate("following").populate('followers').exec(function(err,user){
+
       if(err) console.log(err)
       console.log(user)
       res.json(user)
