@@ -14,7 +14,7 @@ angular.module('starter.controllers', [])
 
 MainCtrl.$inject = ["$stateParams", "$rootScope", "$state", "auth", "user", "$window"]
 HomeCtrl.$inject = ["$stateParams", "userService", "productService", 'likeService', "$window"]
-SearchCtrl.$inject = ["productService", "categoryService", "userService", "relationService"]
+SearchCtrl.$inject = ["productService", "categoryService", "userService", "relationService", "$window", "relationService"]
 PostCtrl.$inject = ["$stateParams", "userService", "productService", "$cordovaCamera", "$scope", "$cordovaFileTransfer", "$cordovaFile"]
 NotificationsCtrl.$inject = ["$stateParams", "userService"]
 ProfileCtrl.$inject = ["$stateParams", "userService", "$scope", "$window"]
@@ -156,9 +156,12 @@ function HomeCtrl($stateParams, userService, productService, likeService, $windo
     if (result){
       // your user
       self.user = result
+      console.log(result);
     }
     userService.show(result.following[i]._followed).success(function(result){
       self.peopleArray.push(result)
+      console.log(result, "Hey arman");
+
       for(var p=0; p < result.products.length; p++){
       if(result){
         // the person your following
@@ -173,9 +176,9 @@ function HomeCtrl($stateParams, userService, productService, likeService, $windo
     })
   }
 })
-  self.liked = function(user, product){
+  self.liked = function(product){
     console.log(product, 'insideeeeeeee');
-    likeService.post(({user:user, _product:product})).success(function(result){
+    likeService.post(({user: $window.localStorage.getItem('cID'), _product:product})).success(function(result){
       console.log(result);
       if(result){
         console.log(result);
@@ -185,7 +188,7 @@ function HomeCtrl($stateParams, userService, productService, likeService, $windo
 
 }
 // Search Catagory
-function SearchCtrl(productService, categoryService, userService, relationService){
+function SearchCtrl(productService, categoryService, userService, relationService, $window, relationService){
   var self = this
   self.title = "Search Ctrl title"
   productService.index().success(function(results){
@@ -197,8 +200,16 @@ function SearchCtrl(productService, categoryService, userService, relationServic
   userService.index().success(function(results){
     self.allUsers = results
   })
-  self.followThisUser = function(follower, toFollow){
-    relationService.create({_follower: follower, _followed: toFollow}).success(function(results){
+  self.followThisUser = function(toFollow){
+    userService.show(toFollow).success(function(result){
+      console.log(result, 'hahah')
+      console.log(result.followers, 'dlkfj')
+      // relationService.show(result.followers[1]).success(function(re){
+      //   console.log(re)
+      // })
+    })
+
+    relationService.create({_follower: $window.localStorage.getItem('cID'), _followed: toFollow}).success(function(results){
       console.log(results)
     })
   }
