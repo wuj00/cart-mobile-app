@@ -178,9 +178,9 @@ function HomeCtrl($stateParams, userService, productService, likeService){
     })
   }
 })
-  self.liked = function(product){
+  self.liked = function(user, product){
     console.log(product, 'insideeeeeeee');
-    likeService.post(({user:main.currentUserId, _product:product})).success(function(result){
+    likeService.post(({user:user, _product:product})).success(function(result){
       console.log(result);
       if(result){
         console.log(result);

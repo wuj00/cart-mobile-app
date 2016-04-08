@@ -109,7 +109,15 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
   templateUrl: 'templates/photo-view.html',
   controller: 'PhotoViewCtrl as pvc'
 })
-
+  .state('profile-edit', {
+    url: '/profile-edit/:user',
+    views: {
+      'profile-edit' : {
+    templateUrl: 'templates/profile-edit.html',
+    controller: 'ProfileCtrl as pc'
+    }
+    }
+  })
 
   // if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise('/login');
