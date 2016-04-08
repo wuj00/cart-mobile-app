@@ -12,30 +12,26 @@ angular.module('starter.controllers', [])
   .controller('PhotoViewCtrl', PhotoViewCtrl)
 
 
-MainCtrl.$inject = ["$stateParams", "$rootScope", "$state", "auth", "user"]
-HomeCtrl.$inject = ["$stateParams", "userService", "productService", 'likeService']
-SearchCtrl.$inject = ["productService", "categoryService", "userService"]
+MainCtrl.$inject = ["$stateParams", "$rootScope", "$state", "auth", "user", "$window"]
+HomeCtrl.$inject = ["$stateParams", "userService", "productService", 'likeService', "$window"]
+SearchCtrl.$inject = ["productService", "categoryService", "userService", "relationService"]
 PostCtrl.$inject = ["$stateParams", "userService", "productService", "$cordovaCamera", "$scope", "$cordovaFileTransfer", "$cordovaFile"]
 NotificationsCtrl.$inject = ["$stateParams", "userService"]
-ProfileCtrl.$inject = ["$stateParams", "userService"]
+ProfileCtrl.$inject = ["$stateParams", "userService", "$scope", "$window"]
 PhotoViewCtrl.$inject = ["$stateParams", "productService"]
 
 // MainCtrl
-function MainCtrl($stateParams, $rootScope, $state, auth, user){
+function MainCtrl($stateParams, $rootScope, $state, auth, user, $window){
   var self = this
   self.title = "Please show up!!!"
-  console.log(self, ',,,')
+//  console.log(self, ',,,')
   self.currentUserId = ""
   self.newUser = {}
   self.loginUser = {}
   // body tag
   $rootScope.$on('$stateChangeStart', function(event, toState){
-    //console.log(toState)
-    //console.log(self.isAuthed())
     if (toState.name === "tab.profile-user" && !self.isAuthed()){
-      //console.log(self)
       event.preventDefault()
-      console.log('log in successfull')
       $state.go('login')
     }
     // if ((toState.name === "tab.search" || toState.name === "tab.newsFeed-user" || toState.name === "tab.post-user" || toState.name === "tab.notifications-user" || toState.name === "tab.profile-user") && !self.isAuthed()){
@@ -50,6 +46,7 @@ function MainCtrl($stateParams, $rootScope, $state, auth, user){
         console.log('JWT:', token);
         auth.saveToken(token)
         self.currentUserId = res.data.user._id
+        $window.localStorage['cID'] = self.currentUserId;
         console.log('id>>>', self.currentUserId)
         $state.go('tab.profile-user', {user: self.currentUserId})
        }
@@ -126,6 +123,7 @@ function authInterceptor(API, auth) {
     // removes token from local storage
     self.logout = function() {
       $window.localStorage.removeItem('jwtToken');
+      $window.localStorage.removeItem('cID');
     }
   }
   function userService($http, API, auth) {
@@ -150,38 +148,38 @@ function authInterceptor(API, auth) {
   }
 
 // News Feed
-function HomeCtrl($stateParams, userService, productService, likeService){
+function HomeCtrl($stateParams, userService, productService, likeService, $window){
   var self = this
   self.productsArray = []
   self.peopleArray = []
 
   self.title = "This is the home ctrl title"
   // $stateParams.user = "5702f9632fe016840c2933fa"
-  userService.show($stateParams.user).success(function(result){
-    for(var i=0; i < result.following.length; i++) {
-    if (result){
-      // your user
-      self.user = result
-    }
-    userService.show(result.following[i]._followed).success(function(result){
-      self.peopleArray.push(result)
-      for(var p=0; p < result.products.length; p++){
-      if(result){
-        // the person your following
-      }
-      productService.show(result.products[p]).success(function(result){
-        if(result){
-          // the person your followings product
-          self.productsArray.push(result)
-        }
-      })
-    }
-    })
-  }
+  userService.show($window.localStorage.getItem('cID')).success(function(result){
+  //   for(var i=0; i < result.following.length; i++) {
+  //   if (result){
+  //     // your user
+  //     self.user = result
+  //   }
+  //   userService.show(result.following[i]._followed).success(function(result){
+  //     self.peopleArray.push(result)
+  //     for(var p=0; p < result.products.length; p++){
+  //     if(result){
+  //       // the person your following
+  //     }
+  //     productService.show(result.products[p]).success(function(result){
+  //       if(result){
+  //         // the person your followings product
+  //         self.productsArray.push(result)
+  //       }
+  //     })
+  //   }
+  //   })
+  // }
 })
-  self.liked = function(product){
+  self.liked = function(user, product){
     console.log(product, 'insideeeeeeee');
-    likeService.post(({user:main.currentUserId, _product:product})).success(function(result){
+    likeService.post(({user:user, _product:product})).success(function(result){
       console.log(result);
       if(result){
         console.log(result);
@@ -191,7 +189,7 @@ function HomeCtrl($stateParams, userService, productService, likeService){
 
 }
 // Search Catagory
-function SearchCtrl(productService, categoryService, userService){
+function SearchCtrl(productService, categoryService, userService, relationService){
   var self = this
   self.title = "Search Ctrl title"
   productService.index().success(function(results){
@@ -203,6 +201,11 @@ function SearchCtrl(productService, categoryService, userService){
   userService.index().success(function(results){
     self.allUsers = results
   })
+  self.followThisUser = function(follower, toFollow){
+    relationService.create({_follower: follower, _followed: toFollow}).success(function(results){
+      console.log(results)
+    })
+  }
 }
 
 // Post a new product
@@ -271,10 +274,12 @@ function NotificationsCtrl($stateParams, userService){
 }
 
 // user profile
-function ProfileCtrl($stateParams, userService, $location){
+function ProfileCtrl($stateParams, userService, $scope, $window){
+  // console.log($scope.$parent.$parent.$parent.$parent.$parent.main.currentUserId)
+  console.log($window.localStorage.getItem('cID'))
   var self = this
   self.title = "Profile Ctrl yes"
-  userService.show($stateParams.user).success(function(result){
+  userService.show($window.localStorage.getItem('cID')).success(function(result){
     if (result){
       console.log(result)
       self.user = result
