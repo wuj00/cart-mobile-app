@@ -65,6 +65,13 @@ ion-tabs.tabs-color-active-positive .tab-item.tab-item-active, ion-tabs.tabs-col
   background: -moz-linear-gradient( #a3d3c7, #39aea9); /* For Firefox 3.6 to 15 */
   background: linear-gradient( #a3d3c7, #39aea9); /* Standard syntax (must be last) */
 }
+.bar .title {
+  color: white;
+  font-family: Diamonds;
+  font-weight: bold;
+  font-size: 18px;
+  line-height: 38px;
+}
 .bar.bar-stable .title {
   color: white;
   font-family: Diamonds;

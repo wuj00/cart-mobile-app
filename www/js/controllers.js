@@ -154,6 +154,7 @@ function HomeCtrl($stateParams, userService, productService, likeService, $windo
   // Setup the loader
   $ionicLoading.show({
     animation: 'fade-in',
+    duration: 10000,
     showBackdrop: true,
     maxWidth: 200,
     showDelay: 0,
