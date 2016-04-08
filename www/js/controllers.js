@@ -16,8 +16,8 @@ MainCtrl.$inject = ["$stateParams", "$rootScope", "$state", "auth", "user", "$wi
 HomeCtrl.$inject = ["$stateParams", "userService", "productService", 'likeService', "$window", "$ionicLoading", "$ionicSlideBoxDelegate"]
 SearchCtrl.$inject = ["productService", "categoryService", "userService", "relationService", "$window", "relationService", "$ionicLoading", "$ionicSlideBoxDelegate"]
 PostCtrl.$inject = ["$stateParams", "userService", "productService", "$cordovaCamera", "$scope", "$cordovaFileTransfer", "$cordovaFile", "$ionicLoading", "$ionicSlideBoxDelegate"]
-NotificationsCtrl.$inject = ["$stateParams", "userService", "$ionicLoading", "$ionicSlideBoxDelegate"]
-ProfileCtrl.$inject = ["$stateParams", "userService", "$scope", "$window", "$ionicLoading", "$ionicSlideBoxDelegate"]
+NotificationsCtrl.$inject = ["$stateParams", "userService", "$ionicLoading"]
+ProfileCtrl.$inject = ["$stateParams", "userService", "$scope", "$window", "$ionicLoading"]
 PhotoViewCtrl.$inject = ["$stateParams", "productService", "$ionicLoading", "$ionicSlideBoxDelegate"]
 
 // MainCtrl
@@ -223,15 +223,20 @@ function SearchCtrl(productService, categoryService, userService, relationServic
   })
   self.followThisUser = function(toFollow){
     userService.show(toFollow).success(function(result){
-      console.log(result, 'hahah')
-      console.log(result.followers, 'dlkfj')
-      // relationService.show(result.followers[1]).success(function(re){
-      //   console.log(re)
-      // })
-    })
-
-    relationService.create({_follower: $window.localStorage.getItem('cID'), _followed: toFollow}).success(function(results){
-      console.log(results)
+      result.followers.forEach(function(el, i){
+        if (el._follower === $window.localStorage.getItem('cID')) {
+          relationService.destroy(el._id).success(function(t){
+            console.log(el._id, 'this is id of relation')
+            console.log(t, '<<<<< destroyed!!!')
+            self.followP = true
+          })
+        } else if (i == result.followers.length - 1) {
+          relationService.create({_follower: $window.localStorage.getItem('cID'), _followed: toFollow}).success(function(results){
+            console.log(results, "added like")
+            self.followP = false
+          })
+        }
+      })
     })
   }
 }
@@ -342,6 +347,14 @@ function ProfileCtrl($stateParams, userService, $scope, $window, $ionicLoading){
   })
   function redirecter(id){
     $location.path("/#/tab/photo/:productId")
+  }
+  self.edit = function(){
+    userService.update($window.localStorage.getItem('cID'), self.edit).success(function(result){
+      if(result){
+        console.log(result);
+
+      }
+    })
   }
 }
 

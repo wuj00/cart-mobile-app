@@ -2,14 +2,20 @@
   <div class="bar bar-header bar-stable">
     <h1 class="title">Edit Profile</h1>
   </div>
-
-
-
-
-
-
-
-
-
+  <div class="list" style="top: 44px;">
+    <form ng-submit="pc.edit()">
+      <div class="list" style="top: 44px;">
+        <label class="item item-input item-stacked-label">
+          <span class="input-label">Name</span>
+          <input ng-model="pc.user.username" type="text" placeholder="Name">
+        </label>
+        <label class="item item-input item-stacked-label">
+          <span class="input-label">Description</span>
+          <input ng-model="pc.user.description" type="text" placeholder="Description">
+        </label>
+        <button type="submit" nav-direction="swap" style="margin-top: 10px;" class="col col-50 col-offset-25 button button-balanced">Submit</button>
+      </div>
+    </form>
+  </div>
   </ion-content>
 </ion-view>
