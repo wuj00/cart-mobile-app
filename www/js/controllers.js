@@ -159,9 +159,11 @@ function HomeCtrl($stateParams, userService, productService, likeService, $windo
     if (result){
       // your user
       self.user = result
+      console.log(result);
     }
     userService.show(result.following[i]._followed).success(function(result){
       self.peopleArray.push(result)
+      console.log(result, "Hey arman");
       for(var p=0; p < result.products.length; p++){
       if(result){
         // the person your following
