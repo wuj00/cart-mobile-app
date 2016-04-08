@@ -90,12 +90,12 @@ function likeService($http){
 
   var apiUrl = 'https://stark-wave-90063.herokuapp.com/likes/'
   var service = {
-    create: create,
+    post: post,
     delete: destroy
   }
   return service
 
-  function create(data){
+  function post(data){
     return $http.post(apiUrl, data)
   }
   function destroy(id){

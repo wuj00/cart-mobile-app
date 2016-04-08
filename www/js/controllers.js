@@ -155,30 +155,30 @@ function HomeCtrl($stateParams, userService, productService, likeService, $windo
   self.title = "This is the home ctrl title"
   // $stateParams.user = "5702f9632fe016840c2933fa"
   userService.show($window.localStorage.getItem('cID')).success(function(result){
-  //   for(var i=0; i < result.following.length; i++) {
-  //   if (result){
-  //     // your user
-  //     self.user = result
-  //   }
-  //   userService.show(result.following[i]._followed).success(function(result){
-  //     self.peopleArray.push(result)
-  //     for(var p=0; p < result.products.length; p++){
-  //     if(result){
-  //       // the person your following
-  //     }
-  //     productService.show(result.products[p]).success(function(result){
-  //       if(result){
-  //         // the person your followings product
-  //         self.productsArray.push(result)
-  //       }
-  //     })
-  //   }
-  //   })
-  // }
+    for(var i=0; i < result.following.length; i++) {
+    if (result){
+      // your user
+      self.user = result
+    }
+    userService.show(result.following[i]._followed).success(function(result){
+      self.peopleArray.push(result)
+      for(var p=0; p < result.products.length; p++){
+      if(result){
+        // the person your following
+      }
+      productService.show(result.products[p]).success(function(result){
+        if(result){
+          // the person your followings product
+          self.productsArray.push(result)
+        }
+      })
+    }
+    })
+  }
 })
-  self.liked = function(user, product){
+  self.liked = function(product){
     console.log(product, 'insideeeeeeee');
-    likeService.post(({user:user, _product:product})).success(function(result){
+    likeService.post(({user: $window.localStorage.getItem('cID'), _product:product})).success(function(result){
       console.log(result);
       if(result){
         console.log(result);
