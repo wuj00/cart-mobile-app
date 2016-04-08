@@ -44,7 +44,8 @@ function relationService($http){
   var apiUrl = 'https://stark-wave-90063.herokuapp.com/relations/'
   var service = {
     create: create,
-    delete: destroy
+    delete: destroy,
+    show: show
   }
   return service
 
@@ -53,6 +54,9 @@ function relationService($http){
   }
   function destroy(id){
     return $http.delete(apiUrl + id)
+  }
+  function show(id){
+    return $http.get(apiUrl + id)
   }
 }
 
