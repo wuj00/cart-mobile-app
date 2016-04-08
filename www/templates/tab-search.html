@@ -31,18 +31,44 @@
           </button>
         </div>
 
+        <div class="container" style="width: 100%; height: 10%; background-color:#39aea9;">
+            <h1 style="text-align:center; color: white; margin-top:-1px;">
+                Categories
+            </h1>
+        </div>
+        <div ng-repeat="c in sc.allCategories">
+            <a class="button button-full button-stable icon-right ion-arrow-right-b" id="s-btn" href="#/tab/notifications/">
+                {{c.name}}
+            </a>
+        </div>
+
+        <h1 style="text-align:center; background-color:#e5efc1; padding: 10px 0 10px 0; color:grey;">
+            All Users
+        </h1>
 
 
-        <div class="item item-button-right" style="padding:0;">
-            <ul class="list" ng-repeat="user in sc.allUsers" style="margin:0; padding:0;">
-                <li style="text-align: left; font-size: 18px; border-top: solid lightgrey 1px;
-                border-bottom: solid lightgrey 1px; margin: -1px 0 -1px 0; padding:10px; line-height: 30px;">
-                    {{user.username}}
-                    <button ng-class="sc.followP ? 'button button-small button-balanced' : 'button button-small button-assertive'" ng-click="sc.followThisUser(user._id)" style="float:right;">
-                        Follow
-                    </button>
-                </li>
-            </ul>
+<div class="container" style="width: 100%; height: 10%; background-color:#39aea9;">
+    <h1 style="text-align:center; color: white;">
+        Categories
+    </h1>
+</div>
+    <div ng-repeat="c in sc.allCatagories">
+      <button class="button button-full button-positive">
+        {{c.name}}
+      </button>
+    </div>
+    <h1>All Users</h1>
+    <ul ng-repeat="user in sc.allUsers">
+      <li style="text-align: center; font-size: 25px; border: 2px solid black; margin-bottom: 10px;">{{user.username}}<button class="button button-balanced" style="margin-left: 10px;" ng-click="sc.followThisUser(user._id)">Follow</button></li>
+    </ul>
+
+
+        <div class="container">
+            <div ng-repeat="c in sc.allCatagories">
+                <a class="button button-full button-stable icon-right ion-arrow-right-b" id="s-btn" href="#/tab/notifications/">
+                    {{c.name}}
+                </a>
+            </div>
         </div>
 
 
