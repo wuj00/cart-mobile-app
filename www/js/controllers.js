@@ -71,10 +71,6 @@ function MainCtrl($stateParams, $rootScope, $state, auth, user, $window){
     self.isAuthed = function() {
       return auth.isAuthed ? auth.isAuthed() : false
     }
-
-
-
-  // vm.currentUserId = "570428cbe54eb0a80b4ea317"
 }
 
 function authInterceptor(API, auth) {
@@ -156,26 +152,26 @@ function HomeCtrl($stateParams, userService, productService, likeService, $windo
   self.title = "This is the home ctrl title"
   // $stateParams.user = "5702f9632fe016840c2933fa"
   userService.show($window.localStorage.getItem('cID')).success(function(result){
-  //   for(var i=0; i < result.following.length; i++) {
-  //   if (result){
-  //     // your user
-  //     self.user = result
-  //   }
-  //   userService.show(result.following[i]._followed).success(function(result){
-  //     self.peopleArray.push(result)
-  //     for(var p=0; p < result.products.length; p++){
-  //     if(result){
-  //       // the person your following
-  //     }
-  //     productService.show(result.products[p]).success(function(result){
-  //       if(result){
-  //         // the person your followings product
-  //         self.productsArray.push(result)
-  //       }
-  //     })
-  //   }
-  //   })
-  // }
+    for(var i=0; i < result.following.length; i++) {
+    if (result){
+      // your user
+      self.user = result
+    }
+    userService.show(result.following[i]._followed).success(function(result){
+      self.peopleArray.push(result)
+      for(var p=0; p < result.products.length; p++){
+      if(result){
+        // the person your following
+      }
+      productService.show(result.products[p]).success(function(result){
+        if(result){
+          // the person your followings product
+          self.productsArray.push(result)
+        }
+      })
+    }
+    })
+  }
 })
   self.liked = function(user, product){
     console.log(product, 'insideeeeeeee');
@@ -209,7 +205,7 @@ function SearchCtrl(productService, categoryService, userService, relationServic
 }
 
 // Post a new product
-function PostCtrl($stateParams, userService, productService, $cordovaCamera, $scope, $cordovaFileTransfer, $cordovaFile){
+function PostCtrl($stateParams, userService, productService, $cordovaCamera, $scope, $cordovaFileTransfer, $cordovaFile, $ionicSlideBoxDelegate){
   // $scope.testFileUpload = function () {
   //    // Destination URL
   //    var url = "http://localhost:8100/users";
@@ -253,7 +249,13 @@ function PostCtrl($stateParams, userService, productService, $cordovaCamera, $sc
     $cordovaCamera.getPicture(picOptions).then(function(data){
       self.newProduct.photos = [data]
     })
+
+
   }
+
+      $scope.navSlide = function(index) {
+          $ionicSlideBoxDelegate.slide(index, 500)
+      }
 
   self.createProduct = function(){
     self.newProduct._creator = $scope.$parent.main.currentUserId

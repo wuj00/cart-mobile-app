@@ -1,4 +1,25 @@
 <ion-view view-title="Search" animation="slide-left-right">
+    <ion-view class="perks-feed-view" hide-back-button="true" hide-nav-bar="true">
+    <ion-header-bar class="bar-dark bar bar-header">
+    <div class="buttons buttons-left header-item">
+    <span class="left-buttons">
+    <button class="button button-icon button-clear ion-ios-drag" menu-toggle="left">
+    </button>
+    </span>
+    </div>
+    <div class="item item-input-inset">
+    <label class="item-input-wrapper">
+    <input type="text" placeholder="Search Business">
+    </label>
+    <span class="button button-small" ng-click="filterFeed()">
+    <i class="icon ion-search placeholder-icon"></i>
+    </span>
+    <span class="button button-small" ng-click="filterFeed()">
+    <i class="icon ion-ios-albums-outline placeholder-icon"></i>
+    </span>
+    </div>
+    </ion-header-bar>
+
     <ion-content>
         <div class="bar bar-header item-input-inset">
             <label class="item-input-wrapper">
