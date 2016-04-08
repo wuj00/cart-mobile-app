@@ -5,7 +5,13 @@
     src: url('../fonts/Diamonds-Regular.ttf') format('truetype');
     font-weight: bold;
     font-style: normal;
-   }
+}
+@font-face {
+   font-family: 'Diamonds-Bold';
+   src: url('../fonts/Diamonds-Bold.ttf') format('truetype');
+   font-weight: normal;
+   font-style: oblique;;
+}
 
 p {
     margin: 0 auto;
