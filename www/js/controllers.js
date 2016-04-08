@@ -210,12 +210,12 @@ function SearchCtrl(productService, categoryService, userService, relationServic
           relationService.destroy(el._id).success(function(t){
             console.log(el._id, 'this is id of relation')
             console.log(t, '<<<<< destroyed!!!')
-            self.followP = true
+            //self.followP = true
           })
         } else if (i == result.followers.length - 1) {
           relationService.create({_follower: $window.localStorage.getItem('cID'), _followed: toFollow}).success(function(results){
             console.log(results, "added like")
-            self.followP = false
+            //self.followP = false
           })
         }
       })

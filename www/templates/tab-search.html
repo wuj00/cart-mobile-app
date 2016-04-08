@@ -23,7 +23,7 @@
     </div>
     <h1>All Users</h1>
     <ul ng-repeat="user in sc.allUsers">
-      <li style="text-align: center; font-size: 25px; border: 2px solid black; margin-bottom: 10px;">{{user.username}}<button ng-class="sc.followP ? 'button button-balanced' : 'button button-assertive'" style="margin-left: 10px;" ng-click="sc.followThisUser(user._id)">Follow</button></li>
+      <li style="text-align: center; font-size: 25px; border: 2px solid black; margin-bottom: 10px;">{{user.username}}<button class="button button-balanced" style="margin-left: 10px;" ng-click="sc.followThisUser(user._id)">Follow</button></li>
     </ul>
 
 
