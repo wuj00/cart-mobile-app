@@ -30,7 +30,7 @@
             </div>
 
             <a class="button button-assertive" ui-sref="login" ng-click="main.logout()">Logout</a>
-            <button class="button button-light" id="p-btn" style="position: absolute; right: 37px; top: 75px; padding: 0px 60px 0px 60px; background: grey; color: white;">
+            <button ui-sref="profile-edit({user: pc.user})"class="button button-light" id="p-btn" style="position: absolute; right: 37px; top: 75px; padding: 0px 60px 0px 60px; background: grey; color: white;">
                 Edit Profile
             </button>
 

@@ -73,7 +73,6 @@ function MainCtrl($stateParams, $rootScope, $state, auth, user, $window){
     }
 
 
-
 }
 
 function authInterceptor(API, auth) {
@@ -298,6 +297,14 @@ function ProfileCtrl($stateParams, userService, $scope, $window){
   })
   function redirecter(id){
     $location.path("/#/tab/photo/:productId")
+  }
+  self.edit = function(){
+    userService.update($window.localStorage.getItem('cID'), self.edit).success(function(result){
+      if(result){
+        console.log(result);
+
+      }
+    })
   }
 }
 

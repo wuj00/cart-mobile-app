@@ -10,7 +10,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
 
-    
+
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
     // for form inputs)
     if (window.cordova && window.cordova.plugins && window.cordova.plugins.Keyboard) {
@@ -112,12 +112,8 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
 })
   .state('profile-edit', {
     url: '/profile-edit/:user',
-    views: {
-      'profile-edit' : {
     templateUrl: 'templates/profile-edit.html',
     controller: 'ProfileCtrl as pc'
-    }
-    }
   })
 
   // if none of the above states are matched, use this as the fallback
