@@ -275,6 +275,7 @@ function PostCtrl($stateParams, userService, productService, $cordovaCamera, $sc
   // console.log($scope.$parent.main)
   var self = this
   self.title = "Post Ctrl yeah"
+  self.num = 0
   self.takePhoto = function(){
     // $scope.testFileUpload()
     var newProduct = {}
@@ -304,7 +305,8 @@ function PostCtrl($stateParams, userService, productService, $cordovaCamera, $sc
     productService.create(self.newProduct).success(function(results){
       console.log(results, "look for photo")
       self.resultFromPost = results.product.photos[0]
-      
+      $window.localStorage[self.num] = self.resultFromPost;
+      self.num += 1
     })
   }
 }
