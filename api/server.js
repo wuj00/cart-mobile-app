@@ -21,9 +21,9 @@ var
 
 // console.log(process.env)
 // console.log(process.env.MLAB_LINK)
-mongoose.connect(process.env.MLAB_LINK, function(err){
+mongoose.connect(config.databaseUrl, function(err){
   if(err) throw err
-  console.log("Connected to mongodb " + process.env.MLAB_LINK)
+  console.log("Connected to mongodb " + config.databaseUrl)
 })
 
 //middleware

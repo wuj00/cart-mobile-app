@@ -3,7 +3,7 @@ angular.module('starter.controllers', [])
   .factory('authInterceptor', authInterceptor)
   .service('user', userService)
   .service('auth', authService)
-  .constant('API', 'https://stark-wave-90063.herokuapp.com/users')
+  .constant('API', 'http://localhost:8100/users')
   .controller('HomeCtrl', HomeCtrl)
   .controller('SearchCtrl', SearchCtrl)
   .controller('PostCtrl', PostCtrl)
@@ -34,6 +34,7 @@ function MainCtrl($stateParams, $rootScope, $state, auth, user, $window, $ionicL
       event.preventDefault()
       $state.go('login')
     }
+
     // if ((toState.name === "tab.search" || toState.name === "tab.newsFeed-user" || toState.name === "tab.post-user" || toState.name === "tab.notifications-user" || toState.name === "tab.profile-user") && !self.isAuthed()){
     //   event.preventDefault()
     //   $state.go("login")
@@ -198,7 +199,7 @@ function HomeCtrl($stateParams, userService, productService, likeService, $windo
   }
 
 }
-// Search Catagory
+// Search Category
 function SearchCtrl(productService, categoryService, userService, relationService, $window, relationService, $ionicLoading){
   var self = this
 
@@ -216,7 +217,7 @@ function SearchCtrl(productService, categoryService, userService, relationServic
     self.allProducts = results.products
   })
   categoryService.index().success(function(results){
-    self.allCatagories = results.categories
+    self.allCategories = results.categories
   })
   userService.index().success(function(results){
     self.allUsers = results
@@ -239,6 +240,7 @@ function SearchCtrl(productService, categoryService, userService, relationServic
       })
     })
   }
+  $ionicLoading.hide()
 }
 
 // Post a new product
@@ -297,7 +299,7 @@ function PostCtrl($stateParams, userService, productService, $cordovaCamera, $sc
 
   self.createProduct = function(){
     self.newProduct._creator = $scope.$parent.main.currentUserId
-    self.newProduct.catagory = "57047231bae3c04b25210208"
+    self.newProduct.category = "57047231bae3c04b25210208"
     console.log(self.newProduct, 'this is objs')
     productService.create(self.newProduct).success(function(results){
       console.log(results)
@@ -320,7 +322,7 @@ function NotificationsCtrl($stateParams, userService, $ionicLoading){
   });
 
   self.title = "Notifications Ctrl yup"
-
+  $ionicLoading.hide()
 }
 
 // user profile
@@ -344,6 +346,7 @@ function ProfileCtrl($stateParams, userService, $scope, $window, $ionicLoading){
       console.log(result)
       self.user = result
     }
+    $ionicLoading.hide()
   })
   function redirecter(id){
     $location.path("/#/tab/photo/:productId")
@@ -374,6 +377,7 @@ function PhotoViewCtrl($stateParams, productService, $ionicLoading){
     if(result){
       console.log(result, "this is from the PhotoViewCtrl");
       self.product = result
+      $ionicLoading.hide()
     }
   })
 }

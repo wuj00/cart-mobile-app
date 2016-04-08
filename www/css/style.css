@@ -6,6 +6,12 @@
     font-weight: bold;
     font-style: normal;
    }
+@font-face {
+   font-family: 'Diamonds-Bold';
+   src: url('../fonts/Diamonds-Bold.ttf') format('truetype');
+   font-weight: normal;
+   font-style: oblique;
+  }
 
 p {
     margin: 0 auto;
@@ -231,5 +237,17 @@ ion-item.item.item-complex {
     border-top: solid lightgrey 1px;
     border-bottom: solid lightgrey 1px;
     margin: -1px 0 -1px 0;
-
 }
+
+/*---LOGIN-------------------------------------*/
+.item-input-wrapper {
+    padding: 5px 8px 5px 8px;
+}
+/*.button.button-outline.button-block.button-royal {
+    border-color: #ee6e73;
+    color: #ee6e73;
+}
+.button.button-outline.button-block.button-royal.activated {
+    background-color: #ee6e73;
+    color: white;
+}*/

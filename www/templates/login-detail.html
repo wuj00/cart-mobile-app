@@ -1,17 +1,32 @@
-<ion-view view-title="Login">
-  <div class="bar bar-header bar-stable">
-  <h1 class="title">Cart</h1>
-  </div>
-  <ion-content>
-      <div class="list" style="top: 44px;">
-        <label class="item item-input">
-          <input ng-model="main.loginUser.username" type="text" placeholder="Username">
-        </label>
-        <label class="item item-input">
-          <input ng-model="main.loginUser.password" type="text" placeholder="Password">
-        </label>
-        <a ui-sref="tab.profile-user({user: main.currentUserId})" class="col button button-positive" ng-click="main.login()">Login!!</a>
-        <a nav-direction="swap" style="margin-top: 10px;" class="col col-50 col-offset-25 button button-balanced" ui-sref="register">Or Sign Up</a>
-      </div>
-  </ion-content>
-</ion-view>
+<ion-nav-view style="background: #e5efc1 ;
+ background: -webkit-linear-gradient(#e5efc1 , #a2d5ab , #39aea9 );
+ background: -o-linear-gradient(#e5efc1 , #a2d5ab , #39aea9 );
+ background: -moz-linear-gradient(#e5efc1 , #a2d5ab , #39aea9 );
+ background: linear-gradient(#e5efc1 , #a2d5ab , #39aea9 );">
+    <ion-content>
+        <div class="container" style="padding-left:20px; padding-right:20px;">
+            <div class="list" style="text-align:center;">
+                <!-- <h1 style="margin-top:15%; text-align:center; color:#ee6e73; font-family:Diamonds-Bold; font-size:50px;"> -->
+                <h1 style="margin-top:15%; text-align:center; color:#805fce; font-family:Diamonds-Bold; font-size:50px;">
+                    Cart
+                </h1>
+                <div class="item-input-inset" style="margin-top:12%; display: block;">
+                    <label class="item-input-wrapper">
+                        <input ng-model="main.loginUser.username" type="text" placeholder="Username">
+                    </label>
+                    <br>
+                    <label class="item-input-wrapper">
+                        <input ng-model="main.loginUser.password" type="password" placeholder="Password">
+                    </label>
+                    <br>
+                    <button ui-sref="tab.profile-user({user: main.currentUserId})" class="button button-outline button-block button-royal" ng-click="main.login()" style="margin:0;">
+                        Login
+                    </button>
+                    <button nav-direction="swap" style="margin-top:10px; margin-left:0px; color:white;" class="button button-clear button-dark" ui-sref="register">
+                        Or Sign Up
+                    </button>
+                </div>
+            </div>
+        </div>
+    </ion-content>
+</ion-nav-view>
