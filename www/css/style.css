@@ -2,7 +2,7 @@
 
 @font-face {
     font-family: 'Diamonds';
-    src: url('./fonts/Diamonds-Regular.ttf') format('truetype');
+    src: url('../fonts/Diamonds-Regular.ttf') format('truetype');
     font-weight: bold;
     font-style: normal;
    }
